@@ -9,19 +9,18 @@ int	main() {
 	while (option != EXIT) {
 		display_options();
 		option = get_option();
-		switch(option) {
+		switch (option) {
 			case ADD:
 				myNewPhonebook.addContact();
 				break;
 			case SEARCH:
-				myNewPhonebook.searchContact(); // Still in development
+				myNewPhonebook.searchContact();
 				break;
 			case EXIT:
 				std::cout << "Goodbye!" << std::endl;
 				break;
 			default:
 				error_msg("Invalid option");
-				break;
 		}
 	}
 	return 0;

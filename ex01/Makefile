@@ -12,10 +12,9 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 # ================== #
 
 SRC =	main.cpp \
-		options.cpp \
-		# CLASSES
 		Phonebook.cpp \
 		Contact.cpp \
+		utils.cpp \
 
 # ================= #
 #     TARGETS       #

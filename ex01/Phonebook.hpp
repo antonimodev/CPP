@@ -13,6 +13,8 @@ class Phonebook {
 		Phonebook();
 		void	addContact();
 		void	searchContact();
+		void	printContactsTable(size_t maxContacts) const;
+		void	showContactInfo(size_t maxContacts) const;
 };
 
 #endif
