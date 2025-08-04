@@ -7,7 +7,6 @@ void	display_options(void) {
 	std::cout << "3. EXIT" << std::endl;
 }
 
-/* Maybe control bounds for size_t, edge cases for negatives and huge numbers*/
 size_t	get_option(void) {
 	size_t	option = 0;
 

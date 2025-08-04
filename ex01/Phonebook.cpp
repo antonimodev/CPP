@@ -13,44 +13,11 @@ void	Phonebook::storeContact(const Contact& contact) {
 
 void	Phonebook::addContact() {
 	Contact		newContact;
-/* 	std::string	user_input;
-
-	std::cout << "Enter first name: " << std::flush;
-	while (user_input.empty()) {
-		std::cout << "First name cannot be empty" << std::endl;
-		std::getline(std::cin, user_input);
-	} */
 	newContact.setFirstName(get_user_input("Enter first name: "));
-
-/* 	std::cout << "Enter last name: " << std::flush;
-	while (user_input.empty()) {
-		std::cout << "Last name cannot be empty" << std::endl;
-		std::getline(std::cin, user_input);
-	} */
 	newContact.setLastName(get_user_input("Enter last name: "));
-
-/* 	std::cout << "Enter nickname: " << std::flush;
-	while (user_input.empty()) {
-		std::cout << "Nickname cannot be empty" << std::endl;
-		std::getline(std::cin, user_input);
-	} */
 	newContact.setNickname(get_user_input("Enter nickname: "));
-
-/* 	std::cout << "Enter phone number: " << std::flush;
-	while (user_input.empty()) {
-		std::cout << "Phone number cannot be empty" << std::endl;
-		std::getline(std::cin, user_input);
-	} */
 	newContact.setPhoneNumber(get_user_input("Enter phone number: "));
-
-/* 	std::cout << "Enter darkest secret: " << std::flush;
-	while (user_input.empty()) {
-		std::cout << "Darkest secret cannot be empty" << std::endl;
-		std::getline(std::cin, user_input);
-	} */
 	newContact.setDarkestSecret(get_user_input("Enter darkest secret: "));
-
-	// Adding this contact to array
 	storeContact(newContact);
 }
 
