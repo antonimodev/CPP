@@ -2,7 +2,7 @@
 
 class Account {
 	public:
-		Account(int initial_deposit);
+		Account(int initial_deposit); // Builder
 		~Account(); // Delete Account once we finish with it, save memory
 
 		void	makeDeposit(int deposit);
@@ -16,7 +16,7 @@ class Account {
 		static int	getNbWithdrawals();
 		static void	displayAccountsInfos();
 
-	// '_' to point private attributes
+	// '_' to distinguish private attributes
 	private:
 		static void	_displayTimestamp();
 		static int	_nbAccounts;
