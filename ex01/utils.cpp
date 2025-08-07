@@ -19,6 +19,8 @@ size_t	get_option(void) {
 			error_msg("Invalid input. Please enter 1, 2 or 3");
 			continue;
 		}
+		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cin.ignore(999, '\n');
 		if (option == ADD || option == SEARCH || option == EXIT)
 			break;
 		std::cout << "Invalid option. Please enter 1, 2, or 3" << std::endl;
@@ -28,11 +30,14 @@ size_t	get_option(void) {
 
 std::string	get_user_input(std::string msg) {
 	std::string user_input;
-	
-	std::cout << msg << std::flush;
-	while (user_input.empty()) {
-		std::cout << "Input cannot be empty." << std::endl;
+	while (true) {
+		std::cout << msg << std::flush;
 		std::getline(std::cin, user_input);
+		if (user_input.empty()) {
+			std::cout << "Input cannot be empty." << std::endl;
+			continue;
+		}
+		break;
 	}
 	return (user_input);
 }

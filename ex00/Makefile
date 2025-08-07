@@ -2,7 +2,7 @@
 #     VARIABLES       #
 # =================== #
 
-NAME = Megaphone
+NAME = megaphone
 COMPILE = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
@@ -11,7 +11,7 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 #      SOURCES       #
 # ================== #
 
-SRC = Megaphone.cpp
+SRC = megaphone.cpp
 
 # ================= #
 #     TARGETS       #

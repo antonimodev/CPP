@@ -16,6 +16,7 @@ void	print_uppercase(char **av) {
 		if (*av)
 			std::cout << " ";
 	}
+	std::cout << std::endl;
 }
 
 int	main(int ac, char *av[]) {
