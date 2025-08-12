@@ -1,5 +1,12 @@
 #include "utils.hpp"
 
+void		handle_eof(void) {
+	if (std::cin.eof()) {
+		std::cout << "\nEOF detected, exiting..." << std::endl;
+		exit(0);
+	}
+}
+
 void	display_options(void) {
 	std::cout << "Select an option:" << std::endl;
 	std::cout << "1. ADD CONTACT" << std::endl;
@@ -13,6 +20,7 @@ size_t	get_option(void) {
 	while (true) {
 		std::cout << "Enter an option: " << std::flush;
 		std::cin >> option;
+		handle_eof();
 		if (std::cin.fail() || option < 1 || option > 3) {
 			std::cin.clear(); // Clear error flag
 			std::cin.ignore(999, '\n'); // Big number to ignore chars in buffer after fail
@@ -33,6 +41,7 @@ std::string	get_user_input(std::string msg) {
 	while (true) {
 		std::cout << msg << std::flush;
 		std::getline(std::cin, user_input);
+		handle_eof();
 		if (user_input.empty()) {
 			std::cout << "Input cannot be empty." << std::endl;
 			continue;
@@ -42,7 +51,7 @@ std::string	get_user_input(std::string msg) {
 	return (user_input);
 }
 
-std::string formatField(const std::string& str) {
+std::string format_field(const std::string& str) {
     if (str.length() > 10)
         return (str.substr(0, 9) + ".");
     return (str);

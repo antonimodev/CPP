@@ -30,9 +30,9 @@ void	Phonebook::printContactsTable(size_t maxContacts) const {
 	i = 0;
 	while (i < maxContacts) {
         std::cout << "|" << std::setw(8) << i + 1 << "|"
-			<< std::setw(10) << formatField(contacts[i].getFirstName()) << "|"
-            << std::setw(10) << formatField(contacts[i].getLastName()) << "|"
-            << std::setw(10) << formatField(contacts[i].getNickname()) << "|" << std::endl;
+			<< std::setw(10) << format_field(contacts[i].getFirstName()) << "|"
+            << std::setw(10) << format_field(contacts[i].getLastName()) << "|"
+            << std::setw(10) << format_field(contacts[i].getNickname()) << "|" << std::endl;
 			i++;
     }
     std::cout << "---------------------------------------------" << std::endl;
@@ -45,6 +45,7 @@ void	Phonebook::showContactInfo(size_t maxContacts) const {
 	index = 0;
 	std::cout << "Enter the index of the contact to display: " << std::flush;
 	std::cin >> index;
+	handle_eof();
 	if (std::cin.fail() || index < 1 || index > maxContacts) {
 		std::cin.clear();
 		std::cin.ignore(999, '\n');
