@@ -2,17 +2,17 @@
 #     VARIABLES       #
 # =================== #
 
-NAME = account
+NAME = Fixed
 COMPILE = g++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
 #      SOURCES       #
 # ================== #
 
-SRC =	Account.cpp \
-		tests.cpp \
+SRC =	main.cpp \
+		Fixed.cpp \
 
 # ================= #
 #     TARGETS       #
@@ -20,8 +20,9 @@ SRC =	Account.cpp \
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME):$(OBJ)
 	@$(COMPILE) $(FLAGS) -o $@ $^
+	@echo "✅ Successfully compiled!"
 
 obj/%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -29,9 +30,10 @@ obj/%.o: %.cpp
 
 clean:
 	@rm -rf obj/
+	@echo "🧹 Successfully cleaned"
 
 fclean: clean
-	@rm $(NAME)
+	@rm -f $(NAME) 2>/dev/null
 
 re: fclean all
 

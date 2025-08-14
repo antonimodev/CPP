@@ -14,7 +14,17 @@ void	display_options(void) {
 	std::cout << "3. EXIT" << std::endl;
 }
 
-size_t	get_option(void) {
+static std::string	strtrim(std::string &str) {
+	const std::string	whitespaces = " \t\n\r\f\v";
+
+	std::string::size_type start = str.find_first_not_of(whitespaces);
+	if (start == std::string::npos)
+		return "";
+	std::string::size_type end = str.find_last_not_of(whitespaces);
+	return str.substr(start, end - start + 1);
+}
+
+/* size_t	get_option(void) {
 	size_t	option = 0;
 
 	while (true) {
@@ -34,6 +44,33 @@ size_t	get_option(void) {
 		std::cout << "Invalid option. Please enter 1, 2, or 3" << std::endl;
 	}
 	return (option);
+} */
+
+size_t	get_option(void) {
+    size_t		option = 0;
+    std::string	line;
+
+    while (true) {
+        std::cout << "Enter an option: " << std::flush;
+        std::getline(std::cin, line);
+        handle_eof();
+        line = strtrim(line);
+        if (line.empty()) {
+            error_msg("Invalid input. Please enter 1, 2 or 3");
+            continue;
+        }
+        if (line.length() != 1 || !std::isdigit(line[0])) {
+            error_msg("Invalid input. Please enter 1, 2 or 3");
+            continue;
+        }
+        option = line[0] - '0';
+        if (option < 1 || option > 3) {
+            error_msg("Invalid input. Please enter 1, 2 or 3");
+            continue;
+        }
+        break;
+    }
+    return (option);
 }
 
 std::string	get_user_input(std::string msg) {
