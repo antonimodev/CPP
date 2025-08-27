@@ -1,6 +1,12 @@
 #include "HumanB.hpp"
 
+HumanB::HumanB(void) : _name("NULL"), _weapon(NULL) {}
+
 HumanB::HumanB(std::string name) : _name(name) {}
+
+HumanB::~HumanB(void) {
+	std::cout << _name << " has been destroyed." << std::endl;
+}
 
 void	HumanB::setWeapon(Weapon& weapon) {
 	_weapon = &weapon;

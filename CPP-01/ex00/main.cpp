@@ -14,5 +14,5 @@ int	main(void) {
 	// Must be delete because is dynamic memory
 	delete secondZombie;
 
-	return;
+	return 0;
 }

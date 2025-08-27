@@ -1,17 +1,17 @@
-#include "utils.hpp"
-#include "Phonebook.hpp"
+#include "Utils.hpp"
+#include "PhoneBook.hpp"
 
-Phonebook::Phonebook() {
+PhoneBook::PhoneBook() {
 	contactCount = 0;
 }
 
-void	Phonebook::storeContact(const Contact& contact) {
+void	PhoneBook::storeContact(const Contact& contact) {
 	contacts[contactCount % 8] = contact; // contactCount % 8 -> circular array
 	contactCount++;
 	std::cout << "Contact added successfully!" << std::endl;
 }
 
-void	Phonebook::addContact() {
+void	PhoneBook::addContact() {
 	Contact		newContact;
 	newContact.setFirstName(get_user_input("Enter first name: "));
 	newContact.setLastName(get_user_input("Enter last name: "));
@@ -21,7 +21,7 @@ void	Phonebook::addContact() {
 	storeContact(newContact);
 }
 
-void	Phonebook::printContactsTable(size_t maxContacts) const {
+void	PhoneBook::printContactsTable(size_t maxContacts) const {
 	size_t	i;
 
 	std::cout << "---------------------------------------------" << std::endl;
@@ -38,7 +38,7 @@ void	Phonebook::printContactsTable(size_t maxContacts) const {
     std::cout << "---------------------------------------------" << std::endl;
 }
 
-void	Phonebook::showContactInfo(size_t maxContacts) const {
+void	PhoneBook::showContactInfo(size_t maxContacts) const {
 	size_t			index;
 	Contact			selectedContact;
 
@@ -60,7 +60,7 @@ void	Phonebook::showContactInfo(size_t maxContacts) const {
 	std::cout << "Darkest Secret: " << selectedContact.getDarkestSecret() << std::endl;
 }
 
-void	Phonebook::searchContact() {
+void	PhoneBook::searchContact() {
 	size_t	maxContacts;
 
 	if (contactCount < 8)

@@ -2,9 +2,10 @@
 #     VARIABLES       #
 # =================== #
 
-NAME = Phonebook
-COMPILE = g++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = phonebook
+COMPILE = c++
+INCLUDES = -IContact -IPhoneBook -IUtils
+FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
@@ -12,9 +13,9 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 # ================== #
 
 SRC =	main.cpp \
-		Phonebook.cpp \
-		Contact.cpp \
-		utils.cpp \
+		PhoneBook/PhoneBook.cpp \
+		Contact/Contact.cpp \
+		Utils/Utils.cpp \
 
 # ================= #
 #     TARGETS       #
@@ -24,6 +25,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(COMPILE) $(FLAGS) -o $@ $^
+	@echo "✅ Successfully compiled!"
 
 obj/%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -31,9 +33,10 @@ obj/%.o: %.cpp
 
 clean:
 	@rm -rf obj/
+	@echo "🧹 Successfully cleaned"
 
 fclean: clean
-	@rm $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 

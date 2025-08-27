@@ -2,7 +2,7 @@
 #define CONTACT_HPP
 
 /* INCLUDES */
-#include "utils.hpp"
+#include "Utils.hpp"
 
 /* CLASSES */
 class Contact {

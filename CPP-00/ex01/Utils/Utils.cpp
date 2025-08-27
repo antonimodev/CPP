@@ -1,4 +1,4 @@
-#include "utils.hpp"
+#include "Utils.hpp"
 
 void		handle_eof(void) {
 	if (std::cin.eof()) {

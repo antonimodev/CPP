@@ -3,8 +3,9 @@
 # =================== #
 
 NAME = hiThisIsBrain
-COMPILE = g++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+COMPILE = c++
+INCLUDES = -IHumanA -IHumanB -IWeapon
+FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
@@ -12,9 +13,9 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 # ================== #
 
 SRC =	main.cpp \
-		HumanA.cpp \
-		HumanB.cpp \
-		Weapon.cpp \
+		HumanA/HumanA.cpp \
+		HumanB/HumanB.cpp \
+		Weapon/Weapon.cpp \
 
 # ================= #
 #     TARGETS       #
@@ -24,6 +25,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(COMPILE) $(FLAGS) -o $@ $^
+	@echo "✅ Successfully compiled!"
 
 obj/%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -31,9 +33,10 @@ obj/%.o: %.cpp
 
 clean:
 	@rm -rf obj/
+	@echo "🧹 Successfully cleaned"
 
 fclean: clean
-	@rm $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 

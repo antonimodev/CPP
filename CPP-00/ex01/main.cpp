@@ -1,20 +1,20 @@
-#include "utils.hpp"
-#include "Phonebook.hpp"
+#include "Utils.hpp"
+#include "PhoneBook.hpp"
 
 int	main() {
 	size_t		option = 0;
-	Phonebook	myNewPhonebook;
+	PhoneBook	myNewPhoneBook;
 
-	std::cout << "Welcome to your Phonebook!\n";
+	std::cout << "Welcome to your PhoneBook!\n";
 	while (option != EXIT) {
 		display_options();
 		option = get_option();
 		switch (option) {
 			case ADD:
-				myNewPhonebook.addContact();
+				myNewPhoneBook.addContact();
 				break;
 			case SEARCH:
-				myNewPhonebook.searchContact();
+				myNewPhoneBook.searchContact();
 				break;
 			case EXIT:
 				std::cout << "Goodbye!" << std::endl;

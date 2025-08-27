@@ -1,4 +1,4 @@
-#include "Account_copy.hpp"
+#include "AccountCopy.hpp"
 #include <iostream>
 #include <ctime>
 
@@ -91,7 +91,7 @@ void	Account::displayAccountsInfos(void) {
 }
 
 void	Account::_displayTimestamp(void) {
-	std::time_t now = std::time(nullptr);	// Get actual time
+	std::time_t now = std::time(NULL);	// Get actual time
 	char		buf[20];	// Safe buffer to contain complete time format
 
 	std::strftime(buf, sizeof(buf), "[%Y%m%d_%H%M%S] ", std::localtime(&now));

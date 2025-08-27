@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = hiThisIsBrain
-COMPILE = g++
+COMPILE = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
@@ -21,6 +21,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(COMPILE) $(FLAGS) -o $@ $^
+	@echo "✅ Successfully compiled!"
 
 obj/%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -28,9 +29,10 @@ obj/%.o: %.cpp
 
 clean:
 	@rm -rf obj/
+	@echo "🧹 Successfully cleaned"
 
 fclean: clean
-	@rm $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 

@@ -3,15 +3,16 @@
 # =================== #
 
 NAME = account
-COMPILE = g++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+COMPILE = c++
+INCLUDES = -IAccount
+FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
 #      SOURCES       #
 # ================== #
 
-SRC =	Account.cpp \
+SRC =	Account/Account.cpp \
 		tests.cpp \
 
 # ================= #
@@ -22,6 +23,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(COMPILE) $(FLAGS) -o $@ $^
+	@echo "✅ Successfully compiled!"
 
 obj/%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -29,9 +31,10 @@ obj/%.o: %.cpp
 
 clean:
 	@rm -rf obj/
+	@echo "🧹 Successfully cleaned"
 
 fclean: clean
-	@rm $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 

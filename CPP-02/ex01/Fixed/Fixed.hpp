@@ -10,10 +10,10 @@ class Fixed {
 		static const int	_fractionalBits = 8;
 
 	public:
-		Fixed();
+		Fixed(void);
 		Fixed(const int num);
 		Fixed(const float num);
-		~Fixed();
+		~Fixed(void);
 
 		float				toFloat(void) const;
 		int					toInt(void) const;

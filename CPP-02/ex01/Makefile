@@ -3,8 +3,9 @@
 # =================== #
 
 NAME = Fixed
-COMPILE = g++
-FLAGS = -Wall -Werror -Wextra -std=c++98
+COMPILE = c++
+INCLUDES = -IFixed
+FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
@@ -33,7 +34,7 @@ clean:
 	@echo "🧹 Successfully cleaned"
 
 fclean: clean
-	@rm -f $(NAME) 2>/dev/null
+	@rm -f $(NAME)
 
 re: fclean all
 

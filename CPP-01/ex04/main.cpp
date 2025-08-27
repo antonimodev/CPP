@@ -12,6 +12,6 @@ int	main(int ac, char **av) {
 
 	std::string file_content = readFileContent(filename);
 	replaceFileContent(file_content, s1, s2);
-	writeFileContent(filename + ".replace", file_content);
+	writeFileContent("replaced_file", file_content);
 	return 0;
 }

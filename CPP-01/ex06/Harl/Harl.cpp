@@ -2,6 +2,10 @@
 
 Harl::Harl(void) {}
 
+Harl::~Harl(void) {
+	std::cout << "Harl has been destroyed" << std::endl;
+}
+
 void	Harl::debug(void) {
 	std::cout
 		<< "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger."

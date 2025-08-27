@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = ClapTrap
-COMPILE = g++
+COMPILE = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
@@ -33,7 +33,7 @@ clean:
 	@echo "🧹 Successfully cleaned"
 
 fclean: clean
-	@rm -f $(NAME) 2>/dev/null
+	@rm -f $(NAME)
 
 re: fclean all
 

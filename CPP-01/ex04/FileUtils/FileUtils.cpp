@@ -1,7 +1,7 @@
 #include "FileUtils.hpp"
 
 std::string	readFileContent(const std::string& filename) {
-	std::ifstream	file(filename);
+	std::ifstream	file(filename.c_str());
 
 	if (!file.is_open())
 		throw std::runtime_error("Error: fail to open " + filename);
@@ -36,7 +36,7 @@ void	replaceFileContent(std::string& file_content, const std::string& s1, const 
 }
 
 void	writeFileContent(const std::string& filename, const std::string& content) {
-	std::ofstream	file(filename);
+	std::ofstream	file(filename.c_str());
 
 	if (!file.is_open())
 		throw std::runtime_error("Error: fail to create or write in file " + filename);
