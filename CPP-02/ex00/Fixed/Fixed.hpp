@@ -16,7 +16,7 @@ class Fixed {
 		// Operator assignment
 		Fixed &operator=(const Fixed &other);
 		// Destructor
-		~Fixed();
+		~Fixed(void);
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);

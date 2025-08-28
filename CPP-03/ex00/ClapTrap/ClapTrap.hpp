@@ -5,10 +5,10 @@
 
 class ClapTrap {
 	private:
-		std::string	_name;
-		int			_health;
-		int			_energyPoints;
-		int			_damage;
+		std::string		_name;
+		unsigned int	_health;
+		unsigned int	_energyPoints;
+		unsigned int	_damage;
 
 	public:
 		ClapTrap(void);

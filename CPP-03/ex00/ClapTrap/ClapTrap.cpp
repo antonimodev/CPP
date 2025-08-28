@@ -38,7 +38,6 @@ void ClapTrap::takeDamage(unsigned int amount) {
 	}
 
 	_health = (_health > amount) ? (_health - amount) : 0;
-
 	std::cout << _name << " has been attacked and lost " << amount << " health points." << std::endl;
 
 	if (_health == 0)
@@ -51,9 +50,13 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		return;
 	}
 
+	if (_health <= 0) {
+		std::cout << _name << " is death, cannot be repaired." << std::endl;
+		return;
+	}
+
 	_health = (_health + amount <= 10) ? _health + amount : 10;
 	_energyPoints--;
-
 	std::cout
 		<< _name << " restored " << amount << " of health." << std::endl;
 }
