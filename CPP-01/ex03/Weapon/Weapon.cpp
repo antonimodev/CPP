@@ -6,7 +6,7 @@ Weapon::Weapon(std::string type) : _type(type) {}
 
 Weapon::~Weapon(void) {
 	if (_type != "bare hands")
-		std::cout << "Weapon type: " << _type << " has been destroyed." << std::endl;
+		std::cout << "Weapon type: " << _type << " destroyed!." << std::endl;
 }
 
 const std::string&	Weapon::getType(void) const {

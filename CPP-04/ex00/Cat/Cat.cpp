@@ -6,7 +6,7 @@ Cat::Cat(void) {
 }
 
 Cat::~Cat(void) {
-	std::cout << "Cat has been destroyed" << std::endl;
+	std::cout << "Cat destroyed!" << std::endl;
 }
 
 void	Cat::makeSound(void) {

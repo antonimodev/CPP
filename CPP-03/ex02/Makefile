@@ -2,9 +2,10 @@
 #     VARIABLES       #
 # =================== #
 
-NAME = FragTrap
+NAME = fragtrap
 COMPILE = c++
-FLAGS = -Wall -Werror -Wextra -std=c++98
+INCLUDES = -IClapTrap -IFragTrap
+FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
@@ -12,8 +13,8 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 # ================== #
 
 SRC =	main.cpp \
-		ClapTrap.cpp \
-		FragTrap.cpp \
+		ClapTrap/ClapTrap.cpp \
+		FragTrap/FragTrap.cpp \
 
 # ================= #
 #     TARGETS       #

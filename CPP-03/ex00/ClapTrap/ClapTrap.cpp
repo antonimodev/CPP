@@ -1,18 +1,32 @@
 #include "ClapTrap.hpp"
 
+// In C++11 we cant use ClapTrap::ClapTrap(void) : ClapTrap("undefined") to call another
+// constructor in the member initializer list
+
 ClapTrap::ClapTrap(void) : _name("undefined"), _health(10), _energyPoints(10), _damage(0) {
-	std::cout
-		<< "ClapTrap " << _name << " has been created" << std::endl;
+	std::cout << "ClapTrap " << _name << " has been created" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _health(10), _energyPoints(10), _damage(0) {
-	std::cout
-		<< "ClapTrap " << _name << " has been created" << std::endl;
+	std::cout << "ClapTrap " << _name << " has been created" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _health(other._health), _energyPoints(other._energyPoints), _damage(other._damage) {
+	std::cout << "Copy constructor called" << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
+	if (this != &other) {
+		_name = other._name;
+		_health = other._health;
+		_energyPoints = other._energyPoints;
+		_damage = other._damage;
+	}
+	return *this;
 }
 
 ClapTrap::~ClapTrap(void) {
-	std::cout
-		<< "ClapTrap " << _name << " has been destroyed" << std::endl;
+	std::cout << "ClapTrap " << _name << " destroyed!" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target) {
@@ -27,8 +41,7 @@ void ClapTrap::attack(const std::string& target) {
 	}
 
 	_energyPoints--;
-	std::cout
-		<< _name << " attacks " << target << " causing " << _damage << " points of damage." << std::endl;
+	std::cout << _name << " attacks " << target << " causing " << _damage << " points of damage." << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
@@ -57,6 +70,5 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 
 	_health = (_health + amount <= 10) ? _health + amount : 10;
 	_energyPoints--;
-	std::cout
-		<< _name << " restored " << amount << " of health." << std::endl;
+	std::cout << _name << " restored " << amount << " of health." << std::endl;
 }

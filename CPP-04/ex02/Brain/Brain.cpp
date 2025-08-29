@@ -22,5 +22,5 @@ Brain& Brain::operator=(const Brain& other) {
 }
 
 Brain::~Brain(void) {
-	std::cout << "Brain has been destroyed." << std::endl;
+	std::cout << "Brain destroyed!." << std::endl;
 }

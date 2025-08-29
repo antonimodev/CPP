@@ -2,9 +2,10 @@
 #     VARIABLES       #
 # =================== #
 
-NAME = Polymorphism
+NAME = polymorphism
 COMPILE = c++
-FLAGS = -Wall -Werror -Wextra -std=c++98
+INCLUDES = -IAnimal -ICat -IDog -IWrongAnimal -IWrongCat
+FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
@@ -12,11 +13,11 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 # ================== #
 
 SRC =	main.cpp \
-		Animal.cpp \
-		Dog.cpp \
-		Cat.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
+		Animal/Animal.cpp \
+		Dog/Dog.cpp \
+		Cat/Cat.cpp \
+		WrongAnimal/WrongAnimal.cpp \
+		WrongCat/WrongCat.cpp \
 
 # ================= #
 #     TARGETS       #

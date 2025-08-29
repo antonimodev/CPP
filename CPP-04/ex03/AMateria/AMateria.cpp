@@ -19,7 +19,7 @@ AMateria&	AMateria::operator=(const AMateria& other) {
 }
 
 AMateria::~AMateria(void) {
-	std::cout << _type << " Materia has been destroyed." << std::endl;
+	std::cout << _type << " Materia destroyed!." << std::endl;
 }
 
 const std::string&	AMateria::getType(void) const {

@@ -6,7 +6,7 @@ WrongCat::WrongCat(void) {
 }
 
 WrongCat::~WrongCat(void) {
-	std::cout << "Wrong cat has been destroyed" << std::endl;
+	std::cout << "Wrong cat destroyed!" << std::endl;
 }
 
 void	WrongCat::makeSound(void) const {

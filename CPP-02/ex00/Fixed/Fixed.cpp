@@ -5,14 +5,13 @@ Fixed::Fixed(void) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &other) {
+Fixed::Fixed(const Fixed &other) : _fixedPointNumber(other._fixedPointNumber) {
 	std::cout << "Copy constructor called" << std::endl;
-	_fixedPointNumber = other._fixedPointNumber;
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
-	std::cout << "Copy assignment operator called" << std::endl;
 	_fixedPointNumber = other._fixedPointNumber;
+	std::cout << "Copy assignment operator called" << std::endl;
 	return *this;
 }
 

@@ -5,7 +5,7 @@ WrongAnimal::WrongAnimal(void) : _type("Wrong None") {
 }
 
 WrongAnimal::~WrongAnimal(void) {
-	std::cout << "Wrong Animal has been destroyed" << std::endl;
+	std::cout << "Wrong Animal destroyed!" << std::endl;
 }
 
 std::string	WrongAnimal::getType(void) const {

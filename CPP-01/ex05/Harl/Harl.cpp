@@ -3,7 +3,7 @@
 Harl::Harl(void) {}
 
 Harl::~Harl(void) {
-	std::cout << "Harl has been destroyed" << std::endl;
+	std::cout << "Harl destroyed!" << std::endl;
 }
 
 void	Harl::debug(void) {

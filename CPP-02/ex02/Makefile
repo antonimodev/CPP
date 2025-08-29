@@ -2,7 +2,7 @@
 #     VARIABLES       #
 # =================== #
 
-NAME = Fixed
+NAME = fixed
 COMPILE = c++
 INCLUDE = -IFixed
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDE)

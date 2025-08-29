@@ -5,7 +5,7 @@ Animal::Animal(void) : _type("None") {
 }
 
 Animal::~Animal(void) {
-	std::cout << "Animal has been destroyed" << std::endl;
+	std::cout << "Animal destroyed!" << std::endl;
 }
 
 void	Animal::makeSound(void) {

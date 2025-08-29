@@ -6,7 +6,7 @@ Dog::Dog(void) : Animal() {
 }
 
 Dog::~Dog(void) {
-	std::cout << "Dog has been destroyed" << std::endl;
+	std::cout << "Dog destroyed!" << std::endl;
 }
 
 void	Dog::makeSound(void) {

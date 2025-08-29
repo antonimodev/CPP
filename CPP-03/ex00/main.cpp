@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 
 int	main(void) {
-	ClapTrap 	trap("foo");
+	ClapTrap 	trap("MC");
 	std::string	enemy = "dummy";
 
 	trap.attack(enemy);

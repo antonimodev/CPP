@@ -15,7 +15,7 @@ Ice&	Ice::operator=(const Ice& other) {
 }
 
 Ice::~Ice(void) {
-	std::cout << _type << " Materia has been destroyed" << std::endl;
+	std::cout << _type << " Materia destroyed!" << std::endl;
 }
 
 void	Ice::use(ICharacter& target) {

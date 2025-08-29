@@ -15,7 +15,7 @@ Cure&	Cure::operator=(const Cure& other) {
 }
 
 Cure::~Cure(void) {
-	std::cout << _type << " Materia has been destroyed" << std::endl;
+	std::cout << _type << " Materia destroyed!" << std::endl;
 }
 
 void	Cure::use(ICharacter& target) {
