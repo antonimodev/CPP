@@ -1,5 +1,11 @@
 #include "Character.hpp"
 
+Character::Character(void) {
+	_name = "Unnamed";
+	for (int i = 0; i < 4; i++)
+		_ISlots[i] = NULL;
+}
+
 Character::Character(std::string name) : _name(name) {
 	for (int i = 0; i < 4; i++)
 		_ISlots[i] = NULL;
@@ -7,10 +13,6 @@ Character::Character(std::string name) : _name(name) {
 }
 
 Character::Character(const Character& other) : _name(other._name) {
-	for (int i = 0; i < 4; i++) {
-		_ISlots[i] = NULL;
-	}
-
 	for (int i = 0; i < 4; i++) {
 		if (other._ISlots[i])
 			_ISlots[i] = other._ISlots[i]->clone();
@@ -24,17 +26,9 @@ Character&	Character::operator=(const Character& other) {
 	if (this != &other) {
 		_name = other._name;
 		for (int i = 0; i < 4; i++) {
-			if (_ISlots[i]) {
+			if (_ISlots[i])
 				delete _ISlots[i];
-				_ISlots[i] = NULL;
-			}
-		}
-
-		for (int i = 0; i < 4; i++) {
-			if (other._ISlots[i])
-				_ISlots[i] = other._ISlots[i]->clone();
-			else
-				_ISlots[i] = NULL;
+			_ISlots[i] = other._ISlots[i] ? other._ISlots[i]->clone() : NULL;
 		}
 		std::cout << "Character " << _name << " has been assigned." << std::endl;
 	}
@@ -57,7 +51,7 @@ std::string const&	Character::getName(void) const {
 
 void	Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
-		if (_ISlots[i] == NULL) {
+		if (!_ISlots[i]) {
 			_ISlots[i] = m;
 			return;
 		}
@@ -73,7 +67,7 @@ void	Character::unequip(int idx) {
 void	Character::use(int idx, ICharacter& target) {
 	if (idx < 0 || idx >= 4)
 		return;
-	if (_ISlots[idx] == NULL)
+	if (!_ISlots[idx])
 		return;
 
 	_ISlots[idx]->use(target);

@@ -1,6 +1,6 @@
 #include "Ice.hpp"
 
-Ice::Ice(void) : AMateria("ice") {}
+Ice::Ice(void) : AMateria("Ice") {}
 
 Ice::Ice(const Ice& other) : AMateria(other) {
 	std::cout << _type << " has been copied" << std::endl;

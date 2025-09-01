@@ -1,25 +1,28 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria(const std::string &type) : _type(type) {
-	std::cout << _type << " Materia has been created." << std::endl;
+AMateria::AMateria(void) : _type("None") {
+	std::cout << _type << " Materia of type " << _type << " has been created." << std::endl;
 }
 
-AMateria::AMateria(const AMateria& other) {
-	_type = other._type;
+AMateria::AMateria(const std::string &type) : _type(type) {
+	std::cout << _type << " Materia of type " << _type << " has been created." << std::endl;
+}
 
-	std::cout << "Materia has been copied!" << std::endl;
+AMateria::AMateria(const AMateria& other) : _type(other._type) {
+	std::cout << _type << " Materia of type " << _type << " has been copied." << std::endl;
 }
 
 AMateria&	AMateria::operator=(const AMateria& other) {
 	if (this != &other) {
-		std::cout << _type << " Materia has been assigned!" << std::endl;
+		_type = other._type;
+		std::cout << _type << " Materia of type " << _type << " has been assigned!" << std::endl;
 	}
 	return *this;
 
 }
 
 AMateria::~AMateria(void) {
-	std::cout << _type << " Materia destroyed!." << std::endl;
+	std::cout << _type << " Materia of type " << _type << " has been destroyed." << std::endl;
 }
 
 const std::string&	AMateria::getType(void) const {

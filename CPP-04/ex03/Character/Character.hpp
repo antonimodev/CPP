@@ -10,15 +10,16 @@ class Character : public ICharacter {
 		AMateria	*_ISlots[4];
 
 	public:
+		Character(void);
 		Character(std::string name);
 		Character(const Character& other);
 		Character& operator=(const Character& other);
 		~Character(void);
 
-		std::string const& getName() const override;
-		void equip(AMateria* m) override;
-		void unequip(int idx) override;
-		void use(int idx, ICharacter& target) override;
+		std::string const& getName() const;
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 };
 
 #endif

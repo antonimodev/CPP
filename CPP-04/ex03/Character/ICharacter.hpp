@@ -5,7 +5,9 @@
 
 #include "AMateria.hpp"
 
-// If we don't need initialize any attribute, we can build classes without builders
+// If we don't need initialize any attribute, we can build classes without constructors
+
+class AMateria;
 
 class ICharacter {
 	public:

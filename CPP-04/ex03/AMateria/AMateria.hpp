@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#include "Character.hpp"
 #include "ICharacter.hpp"
 
 class AMateria {
@@ -10,6 +11,7 @@ class AMateria {
 		std::string	_type;
 
 	public:
+		AMateria(void);
 		AMateria(const std::string &type);
 		AMateria(const AMateria& other);
 		AMateria& operator=(const AMateria& other);

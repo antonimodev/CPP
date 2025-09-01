@@ -13,8 +13,8 @@ class Cure : public AMateria {
 		~Cure(void);
 
 
-		AMateria* clone() const override;
-		void	use(ICharacter& target) override;
+		AMateria* clone() const;
+		void	use(ICharacter& target);
 };
 
 #endif
