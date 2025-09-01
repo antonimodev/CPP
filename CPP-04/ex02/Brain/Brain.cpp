@@ -1,6 +1,6 @@
 #include "Brain.hpp"
 
-// std::string initialize automatically
+// std::string initialize automatically as "" empty str
 
 Brain::Brain(void) {
 	std::cout << "Brain has been initialized." << std::endl;
