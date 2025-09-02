@@ -4,12 +4,12 @@ WrongCat::WrongCat(void) : WrongAnimal("Cat") {
 	std::cout << "Wrong Animal of type " << _type << " created!" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other) {
+WrongCat::WrongCat(const WrongCat& other) : WrongAnimal(other) {
 	std::cout << "Wrong Cat copy constructor called" << std::endl;
 }
 
-WrongCat &WrongCat::operator=(const WrongCat &other) {
-	if (this != &other)
+WrongCat &WrongCat::operator=(const WrongCat& other) {
+	if (this !=& other)
 		WrongAnimal::operator=(other);
 	std::cout << "Wrong Cat assignment operator called" << std::endl;
 	return *this;

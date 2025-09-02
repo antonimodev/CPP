@@ -1,6 +1,6 @@
 #include "Utils.hpp"
 
-void		handle_eof(void) {
+void	handle_eof(void) {
 	if (std::cin.eof()) {
 		std::cout << "\nEOF detected, exiting..." << std::endl;
 		exit(0);
@@ -14,7 +14,7 @@ void	display_options(void) {
 	std::cout << "3. EXIT" << std::endl;
 }
 
-static std::string	strtrim(std::string &str) {
+static std::string	strtrim(std::string& str) {
 	const std::string	whitespaces = " \t\n\r\f\v";
 
 	std::string::size_type start = str.find_first_not_of(whitespaces);

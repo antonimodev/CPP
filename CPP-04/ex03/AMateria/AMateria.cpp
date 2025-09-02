@@ -13,7 +13,7 @@ AMateria::AMateria(const AMateria& other) : _type(other._type) {
 }
 
 AMateria&	AMateria::operator=(const AMateria& other) {
-	if (this != &other) {
+	if (this !=& other) {
 		_type = other._type;
 		std::cout << _type << " Materia of type " << _type << " has been assigned!" << std::endl;
 	}

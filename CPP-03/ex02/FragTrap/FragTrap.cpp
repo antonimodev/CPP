@@ -10,12 +10,12 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	std::cout << "FragTrap " << _name << " has been created!" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other) {
+FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-FragTrap&	FragTrap::operator=(const FragTrap &other) {
-	if (this != &other)
+FragTrap&	FragTrap::operator=(const FragTrap& other) {
+	if (this !=& other)
 		ClapTrap::operator=(other);
 	return *this;
 }

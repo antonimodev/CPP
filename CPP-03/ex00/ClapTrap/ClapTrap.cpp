@@ -11,12 +11,12 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _health(10), _energyPoints(1
 	std::cout << "ClapTrap " << _name << " has been created" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _health(other._health), _energyPoints(other._energyPoints), _damage(other._damage) {
+ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name), _health(other._health), _energyPoints(other._energyPoints), _damage(other._damage) {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
-	if (this != &other) {
+ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
+	if (this !=& other) {
 		_name = other._name;
 		_health = other._health;
 		_energyPoints = other._energyPoints;

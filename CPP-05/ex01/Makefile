@@ -14,6 +14,7 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 SRC =	main.cpp \
 		Bureaucrat/Bureaucrat.cpp \
+		Form/Form.cpp \
 
 # ================= #
 #     TARGETS       #

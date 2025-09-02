@@ -10,12 +10,12 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	std::cout << "ScavTrap " << _name << " constructed!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) {
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap &other) {
-	if (this != &other)
+ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
+	if (this !=& other)
 		ClapTrap::operator=(other);
 	return *this;
 }

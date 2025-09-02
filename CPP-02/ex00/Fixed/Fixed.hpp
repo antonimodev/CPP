@@ -12,9 +12,9 @@ class Fixed {
 		// Standard builder
 		Fixed(void);
 		// Copy builder
-		Fixed(const Fixed &other);
+		Fixed(const Fixed& other);
 		// Operator assignment
-		Fixed &operator=(const Fixed &other);
+		Fixed& operator=(const Fixed& other);
 		// Destructor
 		~Fixed(void);
 

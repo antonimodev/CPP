@@ -1,14 +1,20 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void) {
 	try {
-		Bureaucrat example("antonimo");
-		std::cout << example.getName() << " has a grade of " << example.getGrade() << std::endl;
-		// example.incrementGrade();
-		// example.decrementGrade();
-		std::cout << example.getName() << " has a grade of " << example.getGrade() << std::endl;
-		std::cout << example << std::endl;
+		Form exam("Examen", 20, 20);
+		Bureaucrat example("antonimo", 15);
+		example.signForm(exam);
+	} catch (const Bureaucrat::GradeTooHighException& e) {
+		std::cout << "Bureaucrat Error: " << e.what() << std::endl;
 	} catch (const Bureaucrat::GradeTooLowException& e) {
-		std::cout << "Error" << std::endl;
+		std::cout << "Bureaucrat Error: " << e.what() << std::endl;
+	} catch (const Form::GradeTooHighException& e) {
+		std::cout << "Form Error: " << e.what() << std::endl;
+	} catch (const Form::GradeTooLowException& e) {
+		std::cout << "Form Error: " << e.what() << std::endl;
 	}
+
+	return 0;
 }

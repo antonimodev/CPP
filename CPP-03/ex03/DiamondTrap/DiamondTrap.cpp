@@ -14,12 +14,12 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 	std::cout << "DiamondTrap " << _name << " has been created!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap(other), FragTrap(other), _name(other._name) {
+DiamondTrap::DiamondTrap(const DiamondTrap& other) : ClapTrap(other), ScavTrap(other), FragTrap(other), _name(other._name) {
 	std::cout << "DiamondTrap copy constructor called" << std::endl;
 }
 
-DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other) {
-	if (this != &other) {
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other) {
+	if (this !=& other) {
 		ClapTrap::operator=(other);
 		_name = other._name;
 	}

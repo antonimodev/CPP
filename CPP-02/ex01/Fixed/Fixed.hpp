@@ -13,14 +13,14 @@ class Fixed {
 		Fixed(void);
 		Fixed(const int num);
 		Fixed(const float num);
-		Fixed(const Fixed &other);
-		Fixed &operator=(const Fixed &other);
+		Fixed(const Fixed& other);
+		Fixed &operator=(const Fixed& other);
 		~Fixed(void);
 
 		float				toFloat(void) const;
 		int					toInt(void) const;
 	};
 
-	std::ostream	&operator<<(std::ostream &out, const Fixed &fixed);
+	std::ostream	&operator<<(std::ostream& out, const Fixed& fixed);
 
 #endif

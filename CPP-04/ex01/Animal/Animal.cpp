@@ -8,12 +8,12 @@ Animal::Animal(const std::string &type) : _type(type) {
 	std::cout << "Animal of type " << _type << " created!" << std::endl;
 }
 
-Animal::Animal(const Animal &other) : _type(other._type) {
+Animal::Animal(const Animal& other) : _type(other._type) {
 	std::cout << "Animal copy constructor called" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &other) {
-	if (this != &other)
+Animal &Animal::operator=(const Animal& other) {
+	if (this !=& other)
 		_type = other._type;
 	std::cout << "Animal assignment operator called" << std::endl;
 	return *this;

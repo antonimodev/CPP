@@ -1,7 +1,9 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include "iostream"
+#include <iostream>
+
+class Form;
 
 class Bureaucrat {
 	private:
@@ -10,11 +12,12 @@ class Bureaucrat {
 
 	public:
 		Bureaucrat(void);
-		Bureaucrat(const std::string name);
-		Bureaucrat(const Bureaucrat &other);
-		Bureaucrat &operator=(const Bureaucrat &other);
+		Bureaucrat(const std::string name, const unsigned int grade);
+		Bureaucrat(const Bureaucrat& other);
+		Bureaucrat &operator=(const Bureaucrat& other);
 		~Bureaucrat(void);
 
+		void				signForm(Form& form) const;
 		const std::string&	getName(void) const;
 		unsigned int		getGrade(void) const;
 		void				incrementGrade(void);
@@ -23,16 +26,12 @@ class Bureaucrat {
 		// Exceptions
 		class GradeTooHighException : public std::exception {
 			public:
-				virtual const char* what(void) const throw() {
-					return "Exception: Grade is too high!";
-				}
+				const char* what(void) const throw();
 		};
 
 		class GradeTooLowException : public std::exception {
 			public:
-				virtual const char* what(void) const throw() {
-					return "Exception: Grade is too low!";
-				}
+				const char* what(void) const throw();
 		};
 	};
 

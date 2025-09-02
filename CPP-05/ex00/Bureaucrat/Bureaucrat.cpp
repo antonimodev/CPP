@@ -4,17 +4,17 @@ Bureaucrat::Bureaucrat(void) : _name("Undefined"), _grade(150) {
 	std::cout << "Bureaucrat named " << _name << " has been created!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name) : _name(name), _grade(150) {
+Bureaucrat::Bureaucrat(const std::string &name) : _name(name), _grade(150) {
 	std::cout << "Bureaucrat named " << _name << " has been created!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _grade(other._grade) {
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {
 	std::cout << "Bureaucrat copy constructor called" << std::endl;
 }
 
 // Can't assign members if they're const, _name is const
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
-	if (this != &other) {
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat& other) {
+	if (this !=& other) {
 		_grade = other._grade;
 		std::cout << "Bureaucrat assignment operator called" << std::endl;
 	}
@@ -23,6 +23,14 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 
 Bureaucrat::~Bureaucrat(void) {
 	std::cout << "Bureaucrat " << _name << " has been destroyed!" << std::endl;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Exception: Grade is too high!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Exception: Grade is too low!";
 }
 
 const std::string&	Bureaucrat::getName(void) const {

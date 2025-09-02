@@ -1,19 +1,26 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+
+// CONSTRUCTORS
 
 Bureaucrat::Bureaucrat(void) : _name("Undefined"), _grade(150) {
 	std::cout << "Bureaucrat named " << _name << " has been created!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name) : _name(name), _grade(150) {
+Bureaucrat::Bureaucrat(const std::string name, const unsigned int grade) : _name(name), _grade(grade) {
+	if (_grade < 1)
+		throw GradeTooHighException();
+	if (_grade > 150)
+		throw GradeTooLowException();
 	std::cout << "Bureaucrat named " << _name << " has been created!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _grade(other._grade) {
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {
 	std::cout << "Bureaucrat copy constructor called" << std::endl;
 }
 
 // Can't assign members if they're const, _name is const
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat& other) {
 	if (this != &other) {
 		_grade = other._grade;
 		std::cout << "Bureaucrat assignment operator called" << std::endl;
@@ -23,6 +30,22 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 
 Bureaucrat::~Bureaucrat(void) {
 	std::cout << "Bureaucrat " << _name << " has been destroyed!" << std::endl;
+}
+
+// EXCEPTIONS
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Exception: Grade is too high!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Exception: Grade is too low!";
+}
+
+// MEMBER FUNCTIONS
+
+void	Bureaucrat::signForm(Form& form) const {
+	form.beSigned(*this);
 }
 
 const std::string&	Bureaucrat::getName(void) const {
