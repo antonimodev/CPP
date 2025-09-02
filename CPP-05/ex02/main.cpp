@@ -10,9 +10,9 @@ int main(void) {
 		std::cout << "Bureaucrat Error: " << e.what() << std::endl;
 	} catch (const Bureaucrat::GradeTooLowException& e) {
 		std::cout << "Bureaucrat Error: " << e.what() << std::endl;
-	} catch (const Form::GradeTooHighException& e) {
+	} catch (const AForm::GradeTooHighException& e) {
 		std::cout << "Form Error: " << e.what() << std::endl;
-	} catch (const Form::GradeTooLowException& e) {
+	} catch (const AForm::GradeTooLowException& e) {
 		std::cout << "Form Error: " << e.what() << std::endl;
 	}
 

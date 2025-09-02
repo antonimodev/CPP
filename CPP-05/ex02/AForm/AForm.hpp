@@ -25,6 +25,7 @@ class AForm {
 		bool				getIsSigned(void) const;
 		unsigned int		getGradeToSign(void) const;
 		unsigned int		getGradeToExecute(void) const;
+		virtual void		execute(const Bureaucrat& executor) const = 0; // This class becomes abstract
 
 		// Exceptions
 		class GradeTooHighException : public std::exception {
