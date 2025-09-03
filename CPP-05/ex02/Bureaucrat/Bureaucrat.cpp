@@ -32,20 +32,10 @@ Bureaucrat::~Bureaucrat(void) {
 	std::cout << "Bureaucrat " << _name << " has been destroyed!" << std::endl;
 }
 
-// EXCEPTIONS
-
-const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Exception: Grade is too high!";
-}
-
-const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Exception: Grade is too low!";
-}
-
 // MEMBER FUNCTIONS
 
-void	Bureaucrat::signAForm(AForm& aform) const {
-	aform.beSigned(*this);
+void	Bureaucrat::signForm(AForm& form) const {
+	form.beSigned(*this);
 }
 
 const std::string&	Bureaucrat::getName(void) const {
@@ -54,6 +44,16 @@ const std::string&	Bureaucrat::getName(void) const {
 
 unsigned int		Bureaucrat::getGrade(void) const {
 	return _grade;
+}
+
+void				Bureaucrat::executeForm(const AForm& form) const {
+	try {
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	} catch (const std::exception& e) {
+		std::cout << _name << " couldn't execute " << form.getName()
+		<< " because " << e.what() << std::endl;
+	}
 }
 
 // Grade cannot be greater than 150 or less than 1
@@ -69,6 +69,18 @@ void				Bureaucrat::decrementGrade(void) {
 		throw GradeTooLowException();
 	_grade++;
 }
+
+// EXCEPTIONS
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Exception: Grade is too high!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Exception: Grade is too low!";
+}
+
+//
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
 	os << bureaucrat.getName() << ", bureaucrat grade: " << bureaucrat.getGrade();

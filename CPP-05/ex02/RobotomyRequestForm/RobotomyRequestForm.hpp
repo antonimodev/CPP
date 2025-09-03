@@ -2,7 +2,7 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
-
+// Required grades: sign 72, exec 45
 class RobotomyRequestForm : public AForm {
 	private:
 		std::string	_target;
@@ -13,6 +13,9 @@ class RobotomyRequestForm : public AForm {
 		RobotomyRequestForm(const RobotomyRequestForm& other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 		~RobotomyRequestForm(void);
+
+	// MEMBER FUNCTIONS
+		void	execute(const Bureaucrat& executor) const;
 };
 
 

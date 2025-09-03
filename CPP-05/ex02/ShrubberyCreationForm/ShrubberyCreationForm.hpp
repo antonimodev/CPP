@@ -2,7 +2,7 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
-
+// Required grades: sign 145, exec 137
 class ShrubberyCreationForm : public AForm {
 	private:
 		std::string	_target;
@@ -13,6 +13,9 @@ class ShrubberyCreationForm : public AForm {
 		ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 		~ShrubberyCreationForm(void);
+
+	// MEMBER FUNCTIONS
+		void	execute(const Bureaucrat& executor) const;
 };
 
 

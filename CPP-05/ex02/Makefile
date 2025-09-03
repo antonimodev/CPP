@@ -4,7 +4,7 @@
 
 NAME = bureaucratSign
 COMPILE = c++
-INCLUDES = -IBureaucrat -IAForm
+INCLUDES = -IBureaucrat -IAForm -IPresidentialPardonForm -IRobotomyRequestForm -IShrubberyCreationForm
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
@@ -15,6 +15,9 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 SRC =	main.cpp \
 		Bureaucrat/Bureaucrat.cpp \
 		AForm/AForm.cpp \
+		PresidentialPardonForm/PresidentialPardonForm.cpp \
+		RobotomyRequestForm/RobotomyRequestForm.cpp \
+		ShrubberyCreationForm/ShrubberyCreationForm.cpp \
 
 # ================= #
 #     TARGETS       #
