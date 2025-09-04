@@ -2,7 +2,7 @@
 #     VARIABLES       #
 # =================== #
 
-NAME = bureaucratSign
+NAME = intern
 COMPILE = c++
 INCLUDES = -IBureaucrat -IAForm -IPresidentialPardonForm -IRobotomyRequestForm -IShrubberyCreationForm -IIntern
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
@@ -18,7 +18,7 @@ SRC =	main.cpp \
 		PresidentialPardonForm/PresidentialPardonForm.cpp \
 		RobotomyRequestForm/RobotomyRequestForm.cpp \
 		ShrubberyCreationForm/ShrubberyCreationForm.cpp \
-		Intern/Intern.hpp \
+		Intern/Intern.cpp \
 
 # ================= #
 #     TARGETS       #

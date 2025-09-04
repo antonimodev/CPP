@@ -18,7 +18,7 @@ class AForm {
 		AForm(const std::string name, const unsigned int gradeToSign, const unsigned int gradeToExecute);
 		AForm(const AForm& other);
 		AForm &operator=(const AForm& other);
-		~AForm(void);
+		virtual ~AForm(void);
 
 		void				beSigned(const Bureaucrat& bureaucrat);
 		const std::string&	getName(void) const;

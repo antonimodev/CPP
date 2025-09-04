@@ -5,27 +5,24 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int main(void) {
 	try {
 		srand(std::time(0)); // Robotomy needs random seed to randomize 50%
-		PresidentialPardonForm	presidential;
-		RobotomyRequestForm		robotomy;
-		ShrubberyCreationForm	shrubbery;
+		Intern intern;
 
+		AForm* presidential = intern.makeForm("presidential pardon", "norminette");
 		Bureaucrat example("antonimo", 5);
 		std::cout << std::endl;
 
-		presidential.beSigned(example);
-		robotomy.beSigned(example);
-		shrubbery.beSigned(example);
+		presidential->beSigned(example);
 		std::cout << std::endl;
 
-		presidential.execute(example);
+		presidential->execute(example);
 		std::cout << std::endl;
-		robotomy.execute(example);
-		std::cout << std::endl;
-		shrubbery.execute(example);
+
+		delete presidential;
 
 	} catch (const AForm::NotSignedException& e) {
 		std::cout << "AForm Error: " << e.what() << std::endl;

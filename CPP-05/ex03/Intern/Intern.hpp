@@ -4,15 +4,16 @@
 #include "AForm.hpp"
 
 class Intern {
-    private:
+	public:
+		Intern(void);
+		Intern(const Intern& other);
+		Intern& operator=(const Intern& other);
+		~Intern(void);
 
-    public:
-        Intern(void);
-        Intern(const Intern& other);
-        Intern& operator=(const Intern& other);
-        ~Intern(void);
-
-        AForm*  makeForm(const std::string formName, const std::string formTarget);
+		AForm*	createPresidentialPardonForm(const std::string& target);
+		AForm*	createRobotomyRequestForm(const std::string& target);
+		AForm*	createShrubberyCreationForm(const std::string& target);
+		AForm*	makeForm(const std::string formName, const std::string formTarget);
 };
 
 #endif
