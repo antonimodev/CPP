@@ -1,5 +1,5 @@
 # =================== #
-#     VARIABLES       #
+#	 VARIABLES	   #
 # =================== #
 
 NAME = diamondtrap
@@ -9,7 +9,7 @@ FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
-#      SOURCES       #
+#	  SOURCES	   #
 # ================== #
 
 SRC =	main.cpp \
@@ -19,7 +19,7 @@ SRC =	main.cpp \
 		DiamondTrap/DiamondTrap.cpp
 
 # ================= #
-#     TARGETS       #
+#	 TARGETS	   #
 # ================= #
 
 all: $(NAME)

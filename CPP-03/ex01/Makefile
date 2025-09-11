@@ -1,5 +1,5 @@
 # =================== #
-#     VARIABLES       #
+#	 VARIABLES	   #
 # =================== #
 
 NAME = scavtrap
@@ -9,7 +9,7 @@ FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
-#      SOURCES       #
+#	  SOURCES	   #
 # ================== #
 
 SRC =	main.cpp \
@@ -17,7 +17,7 @@ SRC =	main.cpp \
 		ScavTrap/ScavTrap.cpp \
 
 # ================= #
-#     TARGETS       #
+#	 TARGETS	   #
 # ================= #
 
 all: $(NAME)

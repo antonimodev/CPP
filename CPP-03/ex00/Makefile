@@ -1,5 +1,5 @@
 # =================== #
-#     VARIABLES       #
+#	 VARIABLES	   #
 # =================== #
 
 NAME = claptrap
@@ -9,14 +9,14 @@ FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDE)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
-#      SOURCES       #
+#	  SOURCES	   #
 # ================== #
 
 SRC =	main.cpp \
 		ClapTrap/ClapTrap.cpp \
 
 # ================= #
-#     TARGETS       #
+#	 TARGETS	   #
 # ================= #
 
 all: $(NAME)

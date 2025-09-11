@@ -55,7 +55,7 @@ MateriaSource::~MateriaSource(void) {
 	std::cout << "Materia Source destructor called" << std::endl;
 }
 
-void    MateriaSource::learnMateria(AMateria* m) {
+void	MateriaSource::learnMateria(AMateria* m) {
 	if (!m) {
 		std::cerr << "Cannot learn a NULL Materia." << std::endl;
 		return;

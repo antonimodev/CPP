@@ -63,9 +63,9 @@ Fixed	Fixed::operator-(const Fixed& other) const {
 
 // It fails if I return directly like other functions
 Fixed Fixed::operator*(const Fixed& other) const {
-    Fixed result;
-    result._fixedPointNumber = (_fixedPointNumber * other._fixedPointNumber) / (1 << _fractionalBits);
-    return result;
+	Fixed result;
+	result._fixedPointNumber = (_fixedPointNumber * other._fixedPointNumber) / (1 << _fractionalBits);
+	return result;
 }
 
 Fixed	Fixed::operator/(const Fixed& other) const {

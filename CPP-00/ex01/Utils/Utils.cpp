@@ -47,30 +47,30 @@ static std::string	strtrim(std::string& str) {
 } */
 
 size_t	get_option(void) {
-    size_t		option = 0;
-    std::string	line;
+	size_t		option = 0;
+	std::string	line;
 
-    while (true) {
-        std::cout << "Enter an option: " << std::flush;
-        std::getline(std::cin, line);
-        handle_eof();
-        line = strtrim(line);
-        if (line.empty()) {
-            error_msg("Invalid input. Please enter 1, 2 or 3");
-            continue;
-        }
-        if (line.length() != 1 || !std::isdigit(line[0])) {
-            error_msg("Invalid input. Please enter 1, 2 or 3");
-            continue;
-        }
-        option = line[0] - '0';
-        if (option < 1 || option > 3) {
-            error_msg("Invalid input. Please enter 1, 2 or 3");
-            continue;
-        }
-        break;
-    }
-    return (option);
+	while (true) {
+		std::cout << "Enter an option: " << std::flush;
+		std::getline(std::cin, line);
+		handle_eof();
+		line = strtrim(line);
+		if (line.empty()) {
+			error_msg("Invalid input. Please enter 1, 2 or 3");
+			continue;
+		}
+		if (line.length() != 1 || !std::isdigit(line[0])) {
+			error_msg("Invalid input. Please enter 1, 2 or 3");
+			continue;
+		}
+		option = line[0] - '0';
+		if (option < 1 || option > 3) {
+			error_msg("Invalid input. Please enter 1, 2 or 3");
+			continue;
+		}
+		break;
+	}
+	return (option);
 }
 
 std::string	get_user_input(std::string msg) {
@@ -89,9 +89,9 @@ std::string	get_user_input(std::string msg) {
 }
 
 std::string format_field(const std::string& str) {
-    if (str.length() > 10)
-        return (str.substr(0, 9) + ".");
-    return (str);
+	if (str.length() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
 }
 
 void	error_msg(const std::string error_msg) {

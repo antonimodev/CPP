@@ -25,15 +25,15 @@ Intern::~Intern(void) {
 
 // MEMBER FUNCTIONS
 AForm*  Intern::createPresidentialPardonForm(const std::string& target) {
-    return new PresidentialPardonForm(target);
+	return new PresidentialPardonForm(target);
 }
 
 AForm*  Intern::createRobotomyRequestForm(const std::string& target) {
-    return new RobotomyRequestForm(target);
+	return new RobotomyRequestForm(target);
 }
 
 AForm*  Intern::createShrubberyCreationForm(const std::string& target) {
-    return new ShrubberyCreationForm(target);
+	return new ShrubberyCreationForm(target);
 }
 
 AForm* Intern::makeForm(const std::string formName, const std::string formTarget) {

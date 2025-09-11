@@ -1,13 +1,13 @@
 #include "FragTrap.hpp"
 
 int main(void) {
-    FragTrap    frag("MC");
-    std::string enemy = ("enemy");
+	FragTrap	frag("MC");
+	std::string enemy = ("enemy");
 
-    frag.attack(enemy);
-    frag.takeDamage(20);
-    frag.beRepaired(10);
-    frag.highFivesGuys();
+	frag.attack(enemy);
+	frag.takeDamage(20);
+	frag.beRepaired(10);
+	frag.highFivesGuys();
 
-    return 0;
+	return 0;
 }

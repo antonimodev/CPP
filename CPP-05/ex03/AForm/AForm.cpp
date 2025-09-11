@@ -78,8 +78,8 @@ const char* AForm::NotSignedException::what(void) const throw() {
 
 // If it's true, getIsSigned returns yes, otherwise no
 std::ostream& operator<<(std::ostream& os, const AForm& AForm) {
-    os << "AForm " << AForm.getName() << ", signed: " << (AForm.getIsSigned() ? "yes" : "no") 
+	os << "AForm " << AForm.getName() << ", signed: " << (AForm.getIsSigned() ? "yes" : "no") 
 		<< ", grade to sign: " << AForm.getGradeToSign() 
 		<< ", grade to execute: " << AForm.getGradeToExecute();
-    return os;
+	return os;
 }

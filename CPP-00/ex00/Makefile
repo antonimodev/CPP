@@ -1,5 +1,5 @@
 # =================== #
-#     VARIABLES       #
+#	 VARIABLES	   #
 # =================== #
 
 NAME = megaphone
@@ -8,13 +8,13 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
-#      SOURCES       #
+#	  SOURCES	   #
 # ================== #
 
 SRC = megaphone.cpp
 
 # ================= #
-#     TARGETS       #
+#	 TARGETS	   #
 # ================= #
 
 all: $(NAME)

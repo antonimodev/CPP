@@ -74,8 +74,8 @@ unsigned int		Form::getGradeToExecute(void) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& form) {
-    os << "Form " << form.getName() << ", signed: " << (form.getIsSigned() ? "yes" : "no") 
+	os << "Form " << form.getName() << ", signed: " << (form.getIsSigned() ? "yes" : "no") 
 		<< ", grade to sign: " << form.getGradeToSign() 
 		<< ", grade to execute: " << form.getGradeToExecute();
-    return os;
+	return os;
 }

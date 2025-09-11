@@ -1,10 +1,10 @@
 // ************************************************************************** //
-//                                                                            //
-//                Account.hpp for GlobalBanksters United                //
-//                Created on  : Thu Nov 20 19:43:15 1989                      //
-//                Last update : Wed Jan 04 14:54:06 1992                      //
-//                Made by : Brad "Buddy" McLane <bm@gbu.com>                  //
-//                                                                            //
+//																			//
+//				Account.hpp for GlobalBanksters United				//
+//				Created on  : Thu Nov 20 19:43:15 1989					  //
+//				Last update : Wed Jan 04 14:54:06 1992					  //
+//				Made by : Brad "Buddy" McLane <bm@gbu.com>				  //
+//																			//
 // ************************************************************************** //
 
 
@@ -13,7 +13,7 @@
 #define __ACCOUNT_H__
 
 // ************************************************************************** //
-//                               Account Class                                //
+//							   Account Class								//
 // ************************************************************************** //
 
 class Account {
@@ -59,10 +59,10 @@ private:
 
 
 // ************************************************************************** //
-// vim: set ts=4 sw=4 tw=80 noexpandtab:                                      //
-// -*- indent-tabs-mode:t;                                                   -*-
-// -*- mode: c++-mode;                                                       -*-
-// -*- fill-column: 75; comment-column: 75;                                  -*-
+// vim: set ts=4 sw=4 tw=80 noexpandtab:									  //
+// -*- indent-tabs-mode:t;												   -*-
+// -*- mode: c++-mode;													   -*-
+// -*- fill-column: 75; comment-column: 75;								  -*-
 // ************************************************************************** //
 
 

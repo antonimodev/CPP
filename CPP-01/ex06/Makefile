@@ -1,5 +1,5 @@
 # =================== #
-#     VARIABLES       #
+#	 VARIABLES	   #
 # =================== #
 
 NAME = harlFilter
@@ -9,14 +9,14 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
-#      SOURCES       #
+#	  SOURCES	   #
 # ================== #
 
 SRC =	main.cpp \
 		Harl/Harl.cpp \
 
 # ================= #
-#     TARGETS       #
+#	 TARGETS	   #
 # ================= #
 
 all: $(NAME)

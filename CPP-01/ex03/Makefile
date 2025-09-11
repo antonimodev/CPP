@@ -1,5 +1,5 @@
 # =================== #
-#     VARIABLES       #
+#	 VARIABLES	   #
 # =================== #
 
 NAME = hiThisIsBrain
@@ -9,7 +9,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
-#      SOURCES       #
+#	  SOURCES	   #
 # ================== #
 
 SRC =	main.cpp \
@@ -18,7 +18,7 @@ SRC =	main.cpp \
 		Weapon/Weapon.cpp \
 
 # ================= #
-#     TARGETS       #
+#	 TARGETS	   #
 # ================= #
 
 all: $(NAME)

@@ -2,9 +2,10 @@
 #	 VARIABLES	   #
 # =================== #
 
-NAME = hiThisIsBrain
+NAME = scalarconverter
 COMPILE = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+INCLUDES = -IScalarConverter
+FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
@@ -12,6 +13,7 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 # ================== #
 
 SRC =	main.cpp \
+		ScalarConverter/ScalarConverter.cpp \
 
 # ================= #
 #	 TARGETS	   #
@@ -19,7 +21,7 @@ SRC =	main.cpp \
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME):$(OBJ)
 	@$(COMPILE) $(FLAGS) -o $@ $^
 	@echo "✅ Successfully compiled!"
 
@@ -32,7 +34,7 @@ clean:
 	@echo "🧹 Successfully cleaned"
 
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

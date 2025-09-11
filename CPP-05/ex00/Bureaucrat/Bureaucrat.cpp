@@ -4,7 +4,7 @@ Bureaucrat::Bureaucrat(void) : _name("Undefined"), _grade(150) {
 	std::cout << "Bureaucrat named " << _name << " has been created!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string &name) : _name(name), _grade(150) {
+Bureaucrat::Bureaucrat(const std::string& name) : _name(name), _grade(150) {
 	std::cout << "Bureaucrat named " << _name << " has been created!" << std::endl;
 }
 

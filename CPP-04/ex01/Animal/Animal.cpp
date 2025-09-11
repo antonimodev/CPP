@@ -4,7 +4,7 @@ Animal::Animal(void) : _type("None") {
 	std::cout << "Animal of type " << _type << " created!" << std::endl;
 }
 
-Animal::Animal(const std::string &type) : _type(type) {
+Animal::Animal(const std::string& type) : _type(type) {
 	std::cout << "Animal of type " << _type << " created!" << std::endl;
 }
 

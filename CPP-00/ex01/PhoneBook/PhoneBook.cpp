@@ -25,17 +25,17 @@ void	PhoneBook::printContactsTable(size_t maxContacts) const {
 	size_t	i;
 
 	std::cout << "---------------------------------------------" << std::endl;
-    std::cout << "|   Index|First Name| Last Name|  Nickname|" << std::endl;
-    std::cout << "---------------------------------------------" << std::endl;
+	std::cout << "|   Index|First Name| Last Name|  Nickname|" << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
 	i = 0;
 	while (i < maxContacts) {
-        std::cout << "|" << std::setw(8) << i + 1 << "|"
+		std::cout << "|" << std::setw(8) << i + 1 << "|"
 			<< std::setw(10) << format_field(contacts[i].getFirstName()) << "|"
-            << std::setw(10) << format_field(contacts[i].getLastName()) << "|"
-            << std::setw(10) << format_field(contacts[i].getNickname()) << "|" << std::endl;
+			<< std::setw(10) << format_field(contacts[i].getLastName()) << "|"
+			<< std::setw(10) << format_field(contacts[i].getNickname()) << "|" << std::endl;
 			i++;
-    }
-    std::cout << "---------------------------------------------" << std::endl;
+	}
+	std::cout << "---------------------------------------------" << std::endl;
 }
 
 void	PhoneBook::showContactInfo(size_t maxContacts) const {
