@@ -22,8 +22,10 @@ void ScalarConverter::convert(std::string str) {
 			return;
 		}
 	}
+
 	std::string exceptions[] = {"nan", "nanf", "-inf", "-inff", "+inf", "+inff"};
 	size_t exceptionsCount = sizeof(exceptions) / sizeof(exceptions[0]);
+
 	for (size_t i = 0; i < exceptionsCount; i++) {
 		if (str == exceptions[i]) {
 			std::cout << "You can't use the following args: nan/nanf/-inf/-inff/+inf/+inff" << std::endl;
