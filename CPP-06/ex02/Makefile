@@ -1,10 +1,10 @@
 # =================== #
-#	   VARIABLES      #
+#	   VARIABLES	  #
 # =================== #
 
-NAME = serializer
+NAME = realtype
 COMPILE = c++
-INCLUDES = -ISerializer
+INCLUDES = -IA -IB -IC -IBase
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
@@ -13,7 +13,10 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 # ================== #
 
 SRC =	main.cpp \
-		Serializer/Serializer.cpp \
+		Base/Base.cpp \
+		A/A.cpp \
+		B/B.cpp \
+		C/C.cpp \
 
 # ================= #
 #	   TARGETS		#
