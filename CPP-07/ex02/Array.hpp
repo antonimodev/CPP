@@ -2,6 +2,15 @@
 #define ARRAY_HPP
 
 template <typename T>
-void    ft(void) {}; // Pending
+class Array {
+    private:
+
+    public:
+        Array(void);
+        Array(unsigned int n);
+        Array(const Array& other);
+        Array& operator=(const Array& other);
+        ~Array(void);
+};
 
 #endif
