@@ -2,9 +2,10 @@
 #	   VARIABLES      #
 # =================== #
 
-NAME = arrayFunction
+NAME = array
 COMPILE = c++
-FLAGS = -Wall -Werror -Wextra -std=c++98
+INCLUDES = -IArray
+FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
