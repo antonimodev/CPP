@@ -16,6 +16,7 @@ int main(void) {
 		std::cout << "Coincidence finded: " << coincidence << std::endl;
 	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
+		return 1;
 	}
 
 	try {
@@ -23,6 +24,7 @@ int main(void) {
 		std::cout << "Coincidence finded: " << coincidence << std::endl;
 	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
+		return 1;
 	}
 
 	return 0;
