@@ -1,1 +1,129 @@
+#include <fstream>
+#include <cstdlib>
+#include <sstream>
+
 #include "BitcoinExchange.hpp"
+
+BitcoinExchange::BitcoinExchange(const std::string db_filename) {
+	std::ifstream db(db_filename.c_str());
+	if (!db.is_open()) {
+		std::cerr << "Error: could not open database file: " << db_filename << std::endl;
+		return;
+	}
+	_db = load_db(db);
+}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : _db(other._db) {}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
+	if (this != &other)
+		_db = other._db;
+	return *this;
+}
+
+BitcoinExchange::~BitcoinExchange(void) {}
+
+// ------------------- Private Helpers -------------------
+
+std::map<std::string, double>	BitcoinExchange::load_db(std::ifstream& db) {
+	std::map<std::string, double> db_map;
+	std::string line;
+
+	std::getline(db, line);
+	while (std::getline(db, line)) {
+		size_t pos = line.find(',');
+		if (pos == std::string::npos)
+			continue;
+
+		std::string date = line.substr(0, pos);
+		std::string rate_str = line.substr(pos + 1);
+		double rate = 0;
+		if (store_safe_stod(rate_str, rate))
+			db_map[date] = rate;
+	}
+	return db_map;
+}
+
+bool	BitcoinExchange::store_safe_stod(const std::string& str, double& value) {
+	std::stringstream numberStream(str);
+	numberStream >> value;
+	if (numberStream.fail() || !numberStream.eof())
+		return false;
+	return true;
+}
+
+bool	BitcoinExchange::validate_date(const std::string& date) {
+	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
+		return false;
+
+	int year = std::atoi(date.substr(0, 4).c_str());
+	int month = std::atoi(date.substr(5, 2).c_str());
+	int day = std::atoi(date.substr(8, 2).c_str());
+
+	if (year < 2009 || year > 2025)
+		return false;
+	if (month < 1 || month > 12)
+		return false;
+	if (day < 1)
+		return false;
+
+	int days_in_month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	if (month == 2 && ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0))
+		days_in_month[1] = 29;
+	if (day > days_in_month[month - 1])
+		return false;
+	return true;
+}
+
+// ------------------- Public Method -------------------
+
+void BitcoinExchange::process_input_file(const std::string& filename) {
+	std::ifstream input(filename.c_str());
+	if (!input.is_open()) {
+		std::cerr << "Error: could not open file: " << filename << std::endl;
+		return;
+	}
+
+	std::string line;
+	std::getline(input, line);
+	while (std::getline(input, line)) {
+		size_t pos = line.find('|');
+		if (pos == std::string::npos) {
+			std::cout << "Error: | separator missing => " << line << std::endl;
+			continue;
+		}
+
+		std::string date = line.substr(0, pos - 1);
+		if (!validate_date(date)) {
+			std::cout << "Error: invalid date => " << date << std::endl;
+			continue;
+		}
+
+		double value = 0;
+		if (!store_safe_stod(line.substr(pos + 1), value)) {
+			std::cout << "Error: invalid date => " << date << std::endl;
+			continue;
+		}
+
+		std::map<std::string,double>::iterator it = _db.find(date);
+		if (it == _db.end()) {
+			it = _db.lower_bound(date);
+			if (it == _db.begin()) {
+				std::cout << "Error: no earlier date available => " << date << std::endl;
+				continue;
+			}
+			--it;
+		}
+
+		double result = value * it->second;
+		if (result < 0) {
+			std::cout << "Error: not a positive number." << std::endl;
+			continue;
+		}
+		if (result > 1e+10) {
+			std::cout << "Error: too large a number." << std::endl;
+			continue;
+		}
+		std::cout << date << " => " << value << " = " << result << std::endl;
+	}
+}
