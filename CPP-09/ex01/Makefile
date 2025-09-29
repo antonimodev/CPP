@@ -2,9 +2,9 @@
 #	   VARIABLES      #
 # =================== #
 
-NAME = stack
+NAME = reversePolishNotation
 COMPILE = c++
-INCLUDES = -IMutantStack
+INCLUDES = -IRPN
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
@@ -13,6 +13,7 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 # ================== #
 
 SRC =	main.cpp \
+		RPN/RPN.cpp \
 
 # ================= #
 #	   TARGETS		#
