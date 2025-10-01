@@ -24,9 +24,10 @@ void	RPN::push(const char* str) {
 
 void	RPN::performOperation(const char op) {
 	if (_numsPile.size() < 2) {
-		std::cerr << "Error: must be at least 2 numbers to operate" << std::endl;
+		std::cerr << "Error: must be at least 2 numbers in stack to operate" << std::endl;
 		exit(1);
 	}
+
 	int firstNum = _numsPile.top();
 	_numsPile.pop();
 	int secondNum = _numsPile.top();
@@ -65,7 +66,6 @@ void	RPN::printStack(void) const {
 
 // ------------------- Global Functions -------------------
 
-// ...existing code...
 bool isNumber(const std::string& arg) {
 	if (arg.empty())
 		return false;
