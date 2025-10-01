@@ -18,14 +18,14 @@ int main(int ac, char **av) {
 
 	RPN polishCalc;
 	while (av && *av) {
-		if (!isNumber(*av) && !isOperator(*av)) {
-			std::cerr << "Error: args must be numbers and arithmetic operators" << std::endl;
-			return 1;
-		}
 		if (isNumber(*av))
 			polishCalc.push(*av);
 		else if (isOperator(*av))
 			polishCalc.performOperation(**av);
+		else {
+			std::cerr << "Error: args must be numbers and arithmetic operators" << std::endl;
+			return 1;
+		}
 		av++;
 	}
 	// polishCalc.printStack(); debug
