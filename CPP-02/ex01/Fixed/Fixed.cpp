@@ -22,12 +22,14 @@ Fixed &Fixed::operator=(const Fixed& other) {
 
 Fixed::~Fixed(void) {};
 
+// operation to fixedpointnumbers with 8 fractionalbits, is equivalent to num * 2^8
 float	Fixed::toFloat(void) const {
 	return static_cast<float>(_fixedPointNumber) / (1 << _fractionalBits);
 }
 
 int	Fixed::toInt(void) const {
-	return _fixedPointNumber >> _fractionalBits;
+	return _fixedPointNumber / (1 << _fractionalBits);
+	//return _fixedPointNumber >> fractionalBits; This is more idiomatic form in C++
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
