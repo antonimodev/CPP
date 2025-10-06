@@ -14,6 +14,7 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 SRC =	main.cpp \
 		Zombie/Zombie.cpp \
+		Zombie/zombieHorde.cpp \
 
 # ================= #
 #	 TARGETS	   #

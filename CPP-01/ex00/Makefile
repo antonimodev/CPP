@@ -14,6 +14,8 @@ OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 SRC =	main.cpp \
 		Zombie/Zombie.cpp \
+		Zombie/newZombie.cpp \
+		Zombie/randomChump.cpp \
 
 # ================= #
 #	 TARGETS	   #

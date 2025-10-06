@@ -5,7 +5,7 @@ HumanB::HumanB(void) : _name("NULL"), _weapon(NULL) {}
 HumanB::HumanB(std::string name) : _name(name) {}
 
 HumanB::~HumanB(void) {
-	std::cout << _name << " destroyed!." << std::endl;
+	std::cout << _name << " destroyed!" << std::endl;
 }
 
 void	HumanB::setWeapon(Weapon& weapon) {

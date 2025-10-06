@@ -1,29 +1,27 @@
 # =================== #
-#	 VARIABLES	   #
+#	   VARIABLES      #
 # =================== #
 
-NAME = unnecessaryViolence
+NAME = pmergeme
 COMPILE = c++
-INCLUDES = -IHumanA -IHumanB -IWeapon
-FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
+INCLUDES = -IPmergeMe
+FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
 # ================== #
-#	  SOURCES	   #
+#	   SOURCES		 #
 # ================== #
 
 SRC =	main.cpp \
-		HumanA/HumanA.cpp \
-		HumanB/HumanB.cpp \
-		Weapon/Weapon.cpp \
+		PmergeMe/PmergeMe.cpp \
 
 # ================= #
-#	 TARGETS	   #
+#	   TARGETS		#
 # ================= #
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME):$(OBJ)
 	@$(COMPILE) $(FLAGS) -o $@ $^
 	@echo "✅ Successfully compiled!"
 
@@ -36,7 +34,7 @@ clean:
 	@echo "🧹 Successfully cleaned"
 
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
