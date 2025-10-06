@@ -29,8 +29,7 @@ int	main(int ac, char **av) {
 
 	if (!validArg(level)) {
 		std::cout
-			<< "Error: Invalid arg"
-			<< std::endl;
+			<< "[ Probably complaining about insignificant problems ]" << std::endl;
 		return 1;
 	}
 

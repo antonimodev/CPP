@@ -2,7 +2,7 @@
 #	 VARIABLES	   #
 # =================== #
 
-NAME = file_replace
+NAME = fileReplace
 COMPILE = c++
 INCLUDES = -IFileUtils
 FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)

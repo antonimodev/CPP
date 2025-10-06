@@ -2,7 +2,7 @@
 #	 VARIABLES	   #
 # =================== #
 
-NAME = hiThisIsBrain
+NAME = unnecessaryViolence
 COMPILE = c++
 INCLUDES = -IHumanA -IHumanB -IWeapon
 FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
