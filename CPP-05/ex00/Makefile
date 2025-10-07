@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = bureaucrat
-COMPILE = c++
+COMPILE = g++
 INCLUDES = -IBureaucrat
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))

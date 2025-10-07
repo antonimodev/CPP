@@ -23,7 +23,7 @@ MateriaSource::MateriaSource(const MateriaSource& other) : _count(other._count) 
 }
 
 MateriaSource&  MateriaSource::operator=(const MateriaSource& other) {
-	if (this !=& other) {
+	if (this != &other) {
 		for (int i = 0; i < 4; i++) {
 			if (_templates[i]) {
 				delete _templates[i];

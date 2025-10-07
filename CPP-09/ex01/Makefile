@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = reversePolishNotation
-COMPILE = c++
+COMPILE = g++
 INCLUDES = -IRPN
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))

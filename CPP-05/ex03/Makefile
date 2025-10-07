@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = intern
-COMPILE = c++
+COMPILE = g++
 INCLUDES = -IBureaucrat -IAForm -IPresidentialPardonForm -IRobotomyRequestForm -IShrubberyCreationForm -IIntern
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))

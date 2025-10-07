@@ -16,7 +16,7 @@ ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name), _health(other._h
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
-	if (this !=& other) {
+	if (this != &other) {
 		_name = other._name;
 		_health = other._health;
 		_energyPoints = other._energyPoints;
@@ -41,7 +41,7 @@ void ClapTrap::attack(const std::string& target) {
 	}
 
 	_energyPoints--;
-	std::cout << _name << " attacks " << target << " causing " << _damage << " points of damage." << std::endl;
+	std::cout << _name << " attacks " << target << " causing " << _damage << " points of damage!" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
@@ -68,7 +68,7 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		return;
 	}
 
-	_health = (_health + amount <= 10) ? _health + amount : 10;
+	_health = (_health + amount <= 10) ? (_health + amount) : 10;
 	_energyPoints--;
 	std::cout << _name << " restored " << amount << " of health." << std::endl;
 }

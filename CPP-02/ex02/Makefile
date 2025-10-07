@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = fixed
-COMPILE = c++
+COMPILE = g++
 INCLUDE = -IFixed
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDE)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))

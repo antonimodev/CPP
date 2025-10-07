@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = unnecessaryViolence
-COMPILE = c++
+COMPILE = g++
 INCLUDES = -IHumanA -IHumanB -IWeapon
 FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))

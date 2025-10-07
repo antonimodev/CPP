@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = phonebook
-COMPILE = c++
+COMPILE = g++
 INCLUDES = -IContact -IPhoneBook -IUtils
 FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))

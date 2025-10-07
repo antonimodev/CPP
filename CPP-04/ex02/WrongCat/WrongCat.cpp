@@ -9,7 +9,7 @@ WrongCat::WrongCat(const WrongCat& other) : WrongAnimal(other) {
 }
 
 WrongCat &WrongCat::operator=(const WrongCat& other) {
-	if (this !=& other)
+	if (this != &other)
 		WrongAnimal::operator=(other);
 	std::cout << "Wrong Cat assignment operator called" << std::endl;
 	return *this;

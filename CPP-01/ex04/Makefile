@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = fileReplace
-COMPILE = c++
+COMPILE = g++
 INCLUDES = -IFileUtils
 FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))

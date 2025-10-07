@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = iterFunction
-COMPILE = c++
+COMPILE = g++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 

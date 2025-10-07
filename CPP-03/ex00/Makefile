@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = claptrap
-COMPILE = c++
+COMPILE = g++
 INCLUDE = -IClapTrap
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDE)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))

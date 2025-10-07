@@ -23,7 +23,7 @@ Character::Character(const Character& other) : _name(other._name) {
 }
 
 Character&	Character::operator=(const Character& other) {
-	if (this !=& other) {
+	if (this != &other) {
 		_name = other._name;
 		for (int i = 0; i < 4; i++) {
 			if (_ISlots[i])

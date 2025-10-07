@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = harl
-COMPILE = c++
+COMPILE = g++
 INCLUDES = -IHarl
 FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))

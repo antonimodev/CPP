@@ -14,7 +14,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(oth
 
 // Can't assign members if they're const, _name is const
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat& other) {
-	if (this !=& other) {
+	if (this != &other) {
 		_grade = other._grade;
 		std::cout << "Bureaucrat assignment operator called" << std::endl;
 	}

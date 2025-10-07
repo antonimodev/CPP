@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = hiThisIsBrain
-COMPILE = c++
+COMPILE = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 

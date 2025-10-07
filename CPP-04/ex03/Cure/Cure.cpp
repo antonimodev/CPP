@@ -7,7 +7,7 @@ Cure::Cure(const Cure& other) : AMateria(other) {
 }
 
 Cure&	Cure::operator=(const Cure& other) {
-	if (this !=& other) {
+	if (this != &other) {
 		AMateria::operator=(other);
 		std::cout << _type << " has been assigned" << std::endl;
 	}

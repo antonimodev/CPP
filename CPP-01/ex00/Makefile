@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = zombie
-COMPILE = c++
+COMPILE = g++
 INCLUDES = -IZombie
 FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))

@@ -15,13 +15,13 @@ FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {
 }
 
 FragTrap&	FragTrap::operator=(const FragTrap& other) {
-	if (this !=& other)
+	if (this != &other)
 		ClapTrap::operator=(other);
 	return *this;
 }
 
 FragTrap::~FragTrap(void) {
-	std::cout << "FragTrap " << _name << " destroyed!!" << std::endl;
+	std::cout << "FragTrap " << _name << " destroyed!" << std::endl;
 }
 
 void FragTrap::highFivesGuys(void) {

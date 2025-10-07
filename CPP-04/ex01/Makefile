@@ -3,7 +3,7 @@
 # =================== #
 
 NAME = polymorphism
-COMPILE = c++
+COMPILE = g++
 INCLUDES = -IAnimal -ICat -IDog -IWrongAnimal -IWrongCat -IBrain
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
