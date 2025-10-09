@@ -1,6 +1,4 @@
 #include "PmergeMe.hpp"
-#include <deque>
-#include <set>
 #include <cstdlib>
 
 int	main(int ac, char **av) {
@@ -10,24 +8,46 @@ int	main(int ac, char **av) {
 	}
 	av++;
 
-	std::set<int> uniqueContainer;
+	std::deque<int> container;
 	for (size_t i = 0; av[i]; ++i) {
 		if (!isNumber(av[i]) || !isPositive(av[i]))
 			return 1;
 
 		int num = std::atoi(av[i]);
-		uniqueContainer.insert(num);
+		container.push_back(num);
 	}
 
-	std::deque<int> container;
-	for (std::set<int>::iterator it = uniqueContainer.begin(); it != uniqueContainer.end(); ++it)
-		container.push_back(*it);
-	uniqueContainer.clear();
-	
+	// Delete duplicated numbers, comparing each element with the other ones
+	for (size_t i = 0; i < container.size(); ++i) {
+		for (size_t j = i + 1; j < container.size(); ) {
+			if (container[i] == container[j])
+				container.erase(container.begin() + j); // erase requires iterator, not literal pos
+			else
+				++j;
+		}
+	}
+
+	// Distribute small and big numbers of each pair to their corresponding deque
 	std::deque<int> smallContainer;
-	for (size_t i = 0; i + 1 < container.size(); ++i) {
-    	smallContainer.push_back(container[i] < container[i + 1] ? container[i] : container[i + 1]);
+	std::deque<int> bigContainer;
+	for (size_t i = 0; i + 1 < container.size(); i += 2) {
+		if (container[i] < container[i + 1]) {
+			smallContainer.push_back(container[i]);
+			bigContainer.push_back(container[i + 1]);
+		} else {
+			smallContainer.push_back(container[i + 1]);
+			bigContainer.push_back(container[i]);
+		}
 	}
+	if (container.size() % 2 != 0)
+		smallContainer.push_back(container[container.size() - 1]);
 
+	// Just for printing
+	std::cout << "Big container: " << std::endl;
+	for (size_t i = 0; i < bigContainer.size(); ++i)
+		std::cout << bigContainer[i] << std::endl;
+	std::cout << "Small container: " << std::endl;
+	for (size_t i = 0; i < smallContainer.size(); ++i)
+		std::cout << smallContainer[i] << std::endl;
 	return 0;
 }

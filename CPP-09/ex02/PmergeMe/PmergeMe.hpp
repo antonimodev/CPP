@@ -2,6 +2,7 @@
 #define PMERGEME_HPP
 
 #include <iostream>
+#include <deque>
 
 class PmergeMe {
 	private:
@@ -11,6 +12,8 @@ class PmergeMe {
 		PmergeMe(const PmergeMe& other);
 		PmergeMe& operator=(const PmergeMe& other);
 		~PmergeMe(void);
+
+		void	fordJohnsonSort(std::deque<int>& container);
 };
 
 bool    isNumber(const std::string& arg);

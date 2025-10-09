@@ -18,6 +18,30 @@ PmergeMe::~PmergeMe(void) {}
 
 // Public methods
 
+void	PmergeMe::fordJohnsonSort(std::deque<int>& container) {
+	if (container.size() <= 1)
+		return;
+
+	std::deque<int> smallContainer;
+	std::deque<int> bigContainer;
+
+	for (size_t i = 0; i + 1 < container.size(); i += 2) {
+		if (container[i] < container[i + 1]) {
+			smallContainer.push_back(container[i]);
+			bigContainer.push_back(container[i + 1]);
+		} else {
+			smallContainer.push_back(container[i + 1]);
+			bigContainer.push_back(container[i]);
+		}
+	}
+	if (container.size() % 2 != 0)
+		smallContainer.push_back(container[container.size() - 1]);
+
+	fordJohnsonSort(bigContainer);
+
+	//TO DO: Here I've to insert smallContainer into the big one and assign this bigContainer
+	//to original passed by reference
+}
 
 // General methods
 
