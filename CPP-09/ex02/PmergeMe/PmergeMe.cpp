@@ -34,7 +34,7 @@ bool    isNumber(const std::string& arg) {
 	return true;
 }
 
-bool	isPositive(const std::string&  arg) {
+bool	isPositive(const std::string& arg) {
 	int	num = std::atoi(arg.c_str());
 	if (num < 0) {
 		std::cerr << "Error: all numbers must be positive" << std::endl;
