@@ -39,8 +39,13 @@ void	PmergeMe::fordJohnsonSort(std::deque<int>& container) {
 
 	fordJohnsonSort(bigContainer);
 
-	//TO DO: Here I've to insert smallContainer into the big one and assign this bigContainer
-	//to original passed by reference
+	for (size_t i = 0; i < smallContainer.size(); ++i) {
+		std::deque<int>::iterator it = std::lower_bound(
+			bigContainer.begin(), bigContainer.end(), smallContainer[i]);
+		bigContainer.insert(it, smallContainer[i]);
+	}
+
+	container = bigContainer;
 }
 
 // General methods

@@ -42,12 +42,11 @@ int	main(int ac, char **av) {
 	if (container.size() % 2 != 0)
 		smallContainer.push_back(container[container.size() - 1]);
 
+	PmergeMe algorithm = PmergeMe();
+	algorithm.fordJohnsonSort(bigContainer);
 	// Just for printing
 	std::cout << "Big container: " << std::endl;
 	for (size_t i = 0; i < bigContainer.size(); ++i)
 		std::cout << bigContainer[i] << std::endl;
-	std::cout << "Small container: " << std::endl;
-	for (size_t i = 0; i < smallContainer.size(); ++i)
-		std::cout << smallContainer[i] << std::endl;
 	return 0;
 }
