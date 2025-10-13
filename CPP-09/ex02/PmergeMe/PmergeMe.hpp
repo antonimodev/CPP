@@ -6,6 +6,9 @@
 
 class PmergeMe {
 	private:
+		std::deque<int>	_bigContainer;
+		std::deque<int>	_smallContainer;
+		std::deque<int>	_finalContainer;
 
 	public:
 		PmergeMe(void);
@@ -13,10 +16,25 @@ class PmergeMe {
 		PmergeMe& operator=(const PmergeMe& other);
 		~PmergeMe(void);
 
-		void	fordJohnsonSort(std::deque<int>& container);
+		// ALGORITHM
+		void	splitPairs(std::deque<int>& container);
+		void	fordJohnsonSort(void);
+		void	binaryInsert(std::deque<int>& src, std::deque<int>& dst);
+
+		// GETTERS
+		std::deque<int> getBigContainer(void);
+		std::deque<int> getSmallContainer(void);
+		std::deque<int> getFinalContainer(void);
+
+		// UTILITIES
+		void	print(void);
+
 };
 
+// PARSE
 bool    isNumber(const std::string& arg);
 bool    isPositive(const std::string& arg);
+
+void	deleteDuplicates(std::deque<int>& container);
 
 #endif
