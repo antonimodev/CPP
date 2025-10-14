@@ -35,6 +35,7 @@ class PmergeMe {
 bool    isNumber(const std::string& arg);
 bool    isPositive(const std::string& arg);
 
+void	parseArgs(std::deque<int>& container, char **av);
 void	deleteDuplicates(std::deque<int>& container);
 
 #endif

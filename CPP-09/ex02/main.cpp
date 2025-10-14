@@ -9,13 +9,7 @@ int	main(int ac, char **av) {
 	av++;
 
 	std::deque<int> container;
-	for (size_t i = 0; av[i]; ++i) {
-		if (!isNumber(av[i]) || !isPositive(av[i]))
-			return 1;
-
-		int num = std::atoi(av[i]);
-		container.push_back(num);
-	}
+	parseArgs(container, av);
 	deleteDuplicates(container);
 
 	PmergeMe algorithm = PmergeMe();

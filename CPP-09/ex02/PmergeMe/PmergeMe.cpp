@@ -40,7 +40,7 @@ void	PmergeMe::splitPairs(std::deque<int>& container) {
 		_smallContainer.push_back(container[container.size() - 1]);
 }
 
-void	PmergeMe::fordJohnsonSort() {
+/* void	PmergeMe::fordJohnsonSort() {
 	if (_bigContainer.size() <= 1)
 		return;
 
@@ -57,6 +57,19 @@ void	PmergeMe::fordJohnsonSort() {
 
 	_finalContainer = _bigContainer;
 	binaryInsert(smallCopy, _finalContainer);
+} */
+
+void	PmergeMe::fordJohnsonSort() {
+	if (_bigContainer.size() <= 1)
+		return;
+
+	PmergeMe foo = PmergeMe();
+
+	foo.splitPairs(foo._bigContainer);
+	foo.fordJohnsonSort();
+	foo.binaryInsert(_smallContainer, _bigContainer);
+
+	_finalContainer = _bigContainer;
 }
 
 std::deque<int>	PmergeMe::getBigContainer(void) {
@@ -104,6 +117,16 @@ bool	isPositive(const std::string& arg) {
 	}
 	// std::cout << "arguments are positive" << std::endl;
 	return true;
+}
+
+void	parseArgs(std::deque<int>& container, char **av) {
+	for (size_t i = 0; av[i]; ++i) {
+		if (!isNumber(av[i]) || !isPositive(av[i]))
+			return;
+
+		int num = std::atoi(av[i]);
+		container.push_back(num);
+	}
 }
 
 void	deleteDuplicates(std::deque<int>& container) {
