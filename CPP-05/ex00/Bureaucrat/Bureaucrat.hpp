@@ -12,10 +12,10 @@ class Bureaucrat {
 		Bureaucrat(void);
 		Bureaucrat(const std::string &name);
 		Bureaucrat(const Bureaucrat& other);
-		Bureaucrat &operator=(const Bureaucrat& other);
+		Bureaucrat&	operator=(const Bureaucrat& other);
 		~Bureaucrat(void);
 
-		const std::string	&getName(void) const;
+		const std::string&	getName(void) const;
 		unsigned int		getGrade(void) const;
 		void				incrementGrade(void);
 		void				decrementGrade(void);

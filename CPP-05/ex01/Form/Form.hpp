@@ -17,7 +17,7 @@ class Form {
 		Form(void);
 		Form(const std::string name, const unsigned int gradeToSign, const unsigned int gradeToExecute);
 		Form(const Form& other);
-		Form &operator=(const Form& other);
+		Form& operator=(const Form& other);
 		~Form(void);
 
 		void				beSigned(const Bureaucrat& bureaucrat);

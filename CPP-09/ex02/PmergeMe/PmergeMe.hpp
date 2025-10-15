@@ -17,8 +17,9 @@ class PmergeMe {
 		~PmergeMe(void);
 
 		// ALGORITHM
-		void	splitPairs(std::deque<int>& container);
-		void	fordJohnsonSort(void);
+		void	splitPairs(const std::deque<int>& container, std::deque<int>& smallContainer,
+				std::deque<int>& bigContainer);
+		void	fordJohnsonSort(std::deque<int>& input);
 		void	binaryInsert(std::deque<int>& src, std::deque<int>& dst);
 
 		// GETTERS

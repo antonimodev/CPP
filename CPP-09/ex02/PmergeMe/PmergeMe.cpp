@@ -1,6 +1,7 @@
 #include "PmergeMe.hpp"
 #include <cctype>
 #include <cstdlib>
+#include <set>
 
 // constructors still in development, (void) to avoid make errors
 PmergeMe::PmergeMe(void) {}
@@ -26,51 +27,36 @@ void	PmergeMe::binaryInsert(std::deque<int>& src, std::deque<int>& dst) {
 	}
 }
 
-void	PmergeMe::splitPairs(std::deque<int>& container) {
-	for (size_t i = 0; i + 1 < container.size(); i += 2) {
-		if (container[i] < container[i + 1]) {
-			_smallContainer.push_back(container[i]);
-			_bigContainer.push_back(container[i + 1]);
-		} else {
-			_smallContainer.push_back(container[i + 1]);
-			_bigContainer.push_back(container[i]);
-		}
-	}
-	if (container.size() % 2 != 0)
-		_smallContainer.push_back(container[container.size() - 1]);
+void PmergeMe::splitPairs(const std::deque<int>& container, std::deque<int>& smallContainer,
+	std::deque<int>& bigContainer)
+{
+    for (size_t i = 0; i + 1 < container.size(); i += 2) {
+        if (container[i] < container[i + 1]) {
+            smallContainer.push_back(container[i]);
+            bigContainer.push_back(container[i + 1]);
+        } else {
+            smallContainer.push_back(container[i + 1]);
+            bigContainer.push_back(container[i]);
+        }
+    }
+    if (container.size() % 2 != 0)
+        smallContainer.push_back(container.back());
 }
 
-/* void	PmergeMe::fordJohnsonSort() {
-	if (_bigContainer.size() <= 1)
+void PmergeMe::fordJohnsonSort(std::deque<int>& container) {
+	if (container.size() <= 1)
 		return;
 
-	std::deque<int> smallCopy = _smallContainer;
-	std::deque<int> bigCopy = _bigContainer;
+	std::deque<int> smallContainer, bigContainer;
 
-	_smallContainer.clear();
-	_bigContainer.clear();
+	splitPairs(container, smallContainer, bigContainer);
+	fordJohnsonSort(bigContainer);
+	binaryInsert(smallContainer, bigContainer);
 
-	splitPairs(bigCopy);
-	fordJohnsonSort();
-	binaryInsert(_smallContainer, _bigContainer);
-	binaryInsert(_smallContainer, smallCopy);
-
-	_finalContainer = _bigContainer;
-	binaryInsert(smallCopy, _finalContainer);
-} */
-
-void	PmergeMe::fordJohnsonSort() {
-	if (_bigContainer.size() <= 1)
-		return;
-
-	PmergeMe foo = PmergeMe();
-
-	foo.splitPairs(foo._bigContainer);
-	foo.fordJohnsonSort();
-	foo.binaryInsert(_smallContainer, _bigContainer);
-
-	_finalContainer = _bigContainer;
+	container = bigContainer;
+	_finalContainer = bigContainer;
 }
+
 
 std::deque<int>	PmergeMe::getBigContainer(void) {
 	return _bigContainer;
@@ -129,13 +115,28 @@ void	parseArgs(std::deque<int>& container, char **av) {
 	}
 }
 
+/* Initial version, complexity complexity o(n²)
 void	deleteDuplicates(std::deque<int>& container) {
-    for (size_t i = 0; i < container.size(); ++i) {
-        for (size_t j = i + 1; j < container.size(); ) {
-            if (container[i] == container[j])
-                container.erase(container.begin() + j);
-            else
-                ++j;
-        }
+	for (size_t i = 0; i < container.size(); ++i) {
+		for (size_t j = i + 1; j < container.size(); ) {
+			if (container[i] == container[j])
+				container.erase(container.begin() + j);
+			else
+				++j;
+		}
 	}
+} */
+
+// Optimized version, complexity o(n)
+void	deleteDuplicates(std::deque<int>& container) {
+	std::set<int> seenValues;
+	std::deque<int>	result;
+	
+	for (size_t i = 0; i < container.size(); ++i) {
+		if (seenValues.find(container[i]) == seenValues.end()) {
+			seenValues.insert(container[i]);
+			result.push_back(container[i]);
+		}
+	}
+	container = result;
 }

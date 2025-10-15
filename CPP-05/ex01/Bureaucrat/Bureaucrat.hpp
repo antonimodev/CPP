@@ -14,7 +14,7 @@ class Bureaucrat {
 		Bureaucrat(void);
 		Bureaucrat(const std::string name, const unsigned int grade);
 		Bureaucrat(const Bureaucrat& other);
-		Bureaucrat &operator=(const Bureaucrat& other);
+		Bureaucrat&	operator=(const Bureaucrat& other);
 		~Bureaucrat(void);
 
 		void				signForm(Form& form) const;
