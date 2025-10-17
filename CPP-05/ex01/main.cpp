@@ -4,7 +4,8 @@
 int main(void) {
 	try {
 		Form exam("Examen", 20, 20);
-		Bureaucrat example("antonimo", 15);
+		Bureaucrat example("antonimo");
+		example.setGrade(15);
 		example.signForm(exam);
 	} catch (const Bureaucrat::GradeTooHighException& e) {
 		std::cout << "Bureaucrat Error: " << e.what() << std::endl;

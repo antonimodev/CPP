@@ -3,10 +3,11 @@
 # =================== #
 
 NAME = zombie
-COMPILE = g++
+COMPILE = c++
 INCLUDES = -IZombie
-FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
+FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES) -MMD
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
+HEADER = $(OBJ:.o=.d)
 
 # ================== #
 #	  SOURCES	   #
@@ -29,6 +30,8 @@ $(NAME): $(OBJ)
 obj/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@$(COMPILE) $(FLAGS) -c $< -o $@
+
+-include $(HEADER)
 
 clean:
 	@rm -rf obj/

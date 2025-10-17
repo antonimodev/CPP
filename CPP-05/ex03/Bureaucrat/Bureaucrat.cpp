@@ -46,6 +46,14 @@ unsigned int		Bureaucrat::getGrade(void) const {
 	return _grade;
 }
 
+void				Bureaucrat::setGrade(unsigned int grade) {
+	if (grade > 150)
+		throw GradeTooLowException();
+	else if (grade < 1)
+		throw GradeTooHighException();
+	_grade = grade;
+}
+
 void				Bureaucrat::executeForm(const AForm& form) const {
 	try {
 		form.execute(*this);

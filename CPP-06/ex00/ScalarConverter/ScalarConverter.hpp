@@ -3,9 +3,14 @@
 
 #include <iostream>
 
-class ScalarConverter {
-	private:
+enum Types {
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE
+};
 
+class ScalarConverter {
 	public:
 		ScalarConverter(void);
 		ScalarConverter(const ScalarConverter& other);

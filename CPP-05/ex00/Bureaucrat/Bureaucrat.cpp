@@ -41,6 +41,14 @@ unsigned int		Bureaucrat::getGrade(void) const {
 	return _grade;
 }
 
+void				Bureaucrat::setGrade(unsigned int grade) {
+	if (grade > 150)
+		throw GradeTooLowException();
+	else if (grade < 1)
+		throw GradeTooHighException();
+	_grade = grade;
+}
+
 // Grade cannot be greater than 150 or less than 1
 // Increments goes towards 1 and decrements goes towards 150
 void				Bureaucrat::incrementGrade(void) {

@@ -3,10 +3,11 @@
 # =================== #
 
 NAME = serializer
-COMPILE = g++
+COMPILE = c++
 INCLUDES = -ISerializer
-FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES)
+FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES) -MMD
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
+HEADER = $(OBJ:.o=.d)
 
 # ================== #
 #	   SOURCES		 #
@@ -28,6 +29,8 @@ $(NAME):$(OBJ)
 obj/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@$(COMPILE) $(FLAGS) -c $< -o $@
+
+-include $(HEADER)
 
 clean:
 	@rm -rf obj/

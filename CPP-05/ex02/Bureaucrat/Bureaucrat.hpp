@@ -17,11 +17,12 @@ class Bureaucrat {
 		Bureaucrat &operator=(const Bureaucrat& other);
 		~Bureaucrat(void);
 
-		void				signForm(AForm& aform) const;
 		const std::string&	getName(void) const;
 		unsigned int		getGrade(void) const;
+		void				setGrade(unsigned int grade);
 		void				incrementGrade(void);
 		void				decrementGrade(void);
+		void				signForm(AForm& aform) const;
 		void				executeForm(const AForm& form) const;
 
 		// Exceptions
