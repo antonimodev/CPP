@@ -6,7 +6,6 @@ int main(int ac, char **av) {
 		return 1;
 	}
 	(av)++;
-	ScalarConverter example;
-	example.convert(*av);
+	ScalarConverter::convert(*av);
 	return 0;
 }

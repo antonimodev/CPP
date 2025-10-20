@@ -7,6 +7,10 @@ Bureaucrat::Bureaucrat(void) : _name("Undefined"), _grade(150) {
 	std::cout << "Bureaucrat named " << _name << " has been created!" << std::endl;
 }
 
+Bureaucrat::Bureaucrat(const char* name) : _name(name ? name : "Undefined"), _grade(150) {
+    std::cout << "Bureaucrat named " << _name << " has been created!" << std::endl;
+}
+
 Bureaucrat::Bureaucrat(const std::string name, const unsigned int grade) : _name(name), _grade(grade) {
 	if (_grade < 1)
 		throw GradeTooHighException();

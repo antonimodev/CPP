@@ -3,14 +3,14 @@
 
 #include <iostream>
 
-enum Types {
-	CHAR,
-	INT,
-	FLOAT,
-	DOUBLE
-};
-
 class ScalarConverter {
+	private:
+		static bool	printSpecials(std::string str);
+		static bool	printChar(std::string str);
+		static bool	printCharQuotes(std::string str);
+		static bool	printNoPrintable(std::string str);
+		static bool	printNum(std::string str);
+
 	public:
 		ScalarConverter(void);
 		ScalarConverter(const ScalarConverter& other);

@@ -10,6 +10,7 @@ class Bureaucrat {
 
 	public:
 		Bureaucrat(void);
+		Bureaucrat(const char* name);
 		Bureaucrat(const std::string &name);
 		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat&	operator=(const Bureaucrat& other);

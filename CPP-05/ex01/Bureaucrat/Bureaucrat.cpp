@@ -8,6 +8,10 @@ Bureaucrat::Bureaucrat(const std::string& name) : _name(name), _grade(150) {
 	std::cout << "Bureaucrat named " << _name << " has been created!" << std::endl;
 }
 
+Bureaucrat::Bureaucrat(const char* name) : _name(name ? name : "Undefined"), _grade(150) {
+    std::cout << "Bureaucrat named " << _name << " has been created!" << std::endl;
+}
+
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {
 	std::cout << "Bureaucrat copy constructor called" << std::endl;
 }
