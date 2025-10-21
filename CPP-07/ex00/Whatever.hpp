@@ -2,7 +2,6 @@
 #define WHATEVER_HPP
 
 template <typename T>
-
 void	swap(T& firstValue, T& secondValue) {
 	T temp = firstValue;
 	firstValue = secondValue;

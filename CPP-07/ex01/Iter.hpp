@@ -10,7 +10,7 @@ void    iter(T* array, size_t arrayLength, F function) {
 };
 
 template <typename T, typename F>
-void    iter(const T* array, size_t arrayLength, F function) {
+void    iter(const T* array, size_t arrayLength, const F function) {
 	for (size_t i = 0; i < arrayLength; i++)
 		function(array[i]);
 };

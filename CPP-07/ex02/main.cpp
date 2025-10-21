@@ -8,7 +8,7 @@ int	main(void) {
 	try {
 		for (size_t i = 0; i < 15; i++)
 			std::cout << example[i] << std::endl;
-	} catch (const std::exception& e) {
+	} catch (const std::out_of_range& e) {
 		std::cout << e.what() << std::endl;
 		return 1;
 	}

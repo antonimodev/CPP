@@ -11,7 +11,7 @@ Array<T>::Array(unsigned int n) : _size(n), _array(new T[_size]()) {}
 
 template <typename T>
 Array<T>::Array(const Array& other) : _size(other._size), _array(new T[_size]()) {
-	for (size_t i = 0; i < _size; i++)
+	for (size_t i = 0; i < _size; ++i)
 		_array[i] = other._array[i];
 }
 
@@ -21,12 +21,13 @@ Array<T>& Array<T>::operator=(const Array& other) {
 		delete[] _array; // Clear current array to store a new one
 		_size = other._size;
 		_array = new T[_size];
-	for (size_t i = 0; i < _size; i++)
+	for (size_t i = 0; i < _size; ++i)
 		_array[i] = other._array[i];
 	}
 	return *this;
 }
 
+// NO CONST
 template <typename T>
 T&	Array<T>::operator[](unsigned int index) {
 	if (index >= _size)
@@ -34,6 +35,7 @@ T&	Array<T>::operator[](unsigned int index) {
 	return _array[index];
 }
 
+// CONST
 template <typename T>
 const T&	Array<T>::operator[](unsigned int index) const {
 	if (index >= _size)
