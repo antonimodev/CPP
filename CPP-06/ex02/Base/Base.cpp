@@ -9,6 +9,7 @@ Base::~Base(void) {}
 
 Base*	Base::generate(void) {
 	int random = std::rand() % 3;
+
 	if (random == 0)
 		return new A();
 	else if (random == 1)
@@ -26,7 +27,16 @@ void	Base::identify(Base* p) {
 		std::cout << "C" << std::endl;
 }
 
-void	Base::identify(Base& p) {
+void Base::identify(Base& p) {
+	if (dynamic_cast<A*>(&p))
+		std::cout << "A" << std::endl;
+	if (dynamic_cast<B*>(&p))
+		std::cout << "B" << std::endl;
+	if (dynamic_cast<C*>(&p))
+		std::cout << "C" << std::endl;
+}
+
+/* void	Base::identify(Base& p) {
 	try {
 		(void)dynamic_cast<A&>(p); // (void) casting to avoid warnings from compiler
 		std::cout << "A" << std::endl;
@@ -39,4 +49,4 @@ void	Base::identify(Base& p) {
 		(void)dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
 	} catch(...) {}
-}
+} */

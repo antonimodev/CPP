@@ -5,19 +5,19 @@
 
 class ScalarConverter {
 	private:
-		static bool	printSpecials(std::string str);
-		static bool	printChar(std::string str);
-		static bool	printCharQuotes(std::string str);
-		static bool	printNoPrintable(std::string str);
-		static bool	printNum(std::string str);
-
-	public:
 		ScalarConverter(void);
 		ScalarConverter(const ScalarConverter& other);
 		ScalarConverter& operator=(const ScalarConverter& other);
 		~ScalarConverter(void);
 
-	static void convert(std::string str);
+	public:
+		static void convert(const std::string& str);
 };
+
+bool	printChar(const std::string& str);
+bool	printCharQuotes(const std::string& str);
+bool	printNum(const std::string& str);
+bool	printSpecials(const std::string& str);
+bool	printNoPrintable(const std::string& str);
 
 #endif
