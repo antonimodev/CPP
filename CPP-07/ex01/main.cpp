@@ -20,9 +20,8 @@ int main(void) {
 
 	std::cout << std::endl;
 
-	std::vector<char> test;
-	test.push_back('a');
-	test.push_back('b');
+	// first param: num of elements, second param: value
+	const std::vector<char> test(2, 'b');
 	// .data() returns pointer to first element inside
 	iter(test.data(), test.size(), printChar);
 
