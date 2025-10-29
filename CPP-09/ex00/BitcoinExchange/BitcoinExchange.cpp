@@ -47,7 +47,7 @@ std::map<std::string, double>	BitcoinExchange::load_db(std::ifstream& db) {
 bool	BitcoinExchange::store_safe_stod(const std::string& str, double& value) {
 	std::stringstream numberStream(str);
 	numberStream >> value;
-	if (numberStream.fail() || !numberStream.eof())
+	if (numberStream.fail() || !numberStream.eof() || value > 1000)
 		return false;
 	return true;
 }
@@ -85,23 +85,30 @@ void BitcoinExchange::process_input_file(const std::string& filename) {
 	}
 
 	std::string line;
-	std::getline(input, line);
+	while (line.empty())
+		if (!std::getline(input, line)) {
+			std::cerr << "Error: file is empty" << std::endl;
+			exit(1);
+		}
+
 	while (std::getline(input, line)) {
+		if (line.empty())
+			continue;
 		size_t pos = line.find('|');
 		if (pos == std::string::npos) {
-			std::cout << "Error: | separator missing => " << line << std::endl;
+			std::cerr << "Error: | separator missing => " << line << std::endl;
 			continue;
 		}
 
 		std::string date = line.substr(0, pos - 1);
 		if (!validate_date(date)) {
-			std::cout << "Error: invalid date => " << date << std::endl;
+			std::cerr << "Error: invalid date => " << date << std::endl;
 			continue;
 		}
 
 		double value = 0;
 		if (!store_safe_stod(line.substr(pos + 1), value)) {
-			std::cout << "Error: invalid date => " << date << std::endl;
+			std::cerr << "Error: invalid value => " << value << std::endl;
 			continue;
 		}
 
@@ -109,7 +116,7 @@ void BitcoinExchange::process_input_file(const std::string& filename) {
 		if (it == _db.end()) {
 			it = _db.lower_bound(date);
 			if (it == _db.begin()) {
-				std::cout << "Error: no earlier date available => " << date << std::endl;
+				std::cerr << "Error: no earlier date available => " << date << std::endl;
 				continue;
 			}
 			--it;
@@ -117,13 +124,27 @@ void BitcoinExchange::process_input_file(const std::string& filename) {
 
 		double result = value * it->second;
 		if (result < 0) {
-			std::cout << "Error: not a positive number." << std::endl;
+			std::cerr << "Error: not a positive number." << std::endl;
 			continue;
 		}
 		if (result > 1e+10) {
-			std::cout << "Error: too large a number." << std::endl;
+			std::cerr << "Error: too large a number." << std::endl;
 			continue;
 		}
+
 		std::cout << date << " => " << value << " = " << result << std::endl;
+	}
+}
+
+// GENERAL FUNCTIONS
+
+void	validExtension(char **av) {
+	std::string input = av[1];
+	size_t pos = input.rfind('.');
+	std::string extension = input.substr(pos + 1);
+
+	if (extension != "txt") {
+		std::cerr << "Error: file format must be .txt" << std::endl;
+		exit(1);
 	}
 }

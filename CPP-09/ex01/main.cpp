@@ -24,10 +24,10 @@ int main(int ac, char **av) {
 
 		while (iss >> arg) {
 			// this can be a little bit tricky in terms of understanding
-			if (arg.size() == 2 && arg[0] != '-') {
+			/* if (arg.size() == 2 && arg[0] != '-') {
 				std::cerr << "Error: numbers must be 1 digit" << std::endl;
 				return 1;
-			}
+			} */
 			if (isNumber(arg.c_str()))
 				polishCalc.push(arg.c_str());
 			else if (isOperator(arg.c_str()))

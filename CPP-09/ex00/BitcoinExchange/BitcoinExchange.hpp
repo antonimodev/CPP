@@ -1,8 +1,9 @@
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
-#include <map>
 #include <iostream>
+#include <cstdlib>
+#include <map>
 
 class BitcoinExchange {
 	private:
@@ -15,10 +16,12 @@ class BitcoinExchange {
 	public:
 		BitcoinExchange(const std::string db);
 		BitcoinExchange(const BitcoinExchange& other);
-		BitcoinExchange& operator=(const BitcoinExchange& other);
+		BitcoinExchange& 	operator=(const BitcoinExchange& other);
 		~BitcoinExchange(void);
 
-		void	process_input_file(const std::string& filename);
+		void				process_input_file(const std::string& filename);
 };
+
+void	validExtension(char **av);
 
 #endif

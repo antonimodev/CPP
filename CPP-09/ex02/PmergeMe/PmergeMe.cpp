@@ -2,48 +2,53 @@
 #include <cctype>
 #include <cstdlib>
 #include <set>
+#include <stdexcept>
 
 // constructors still in development, (void) to avoid make errors
 PmergeMe::PmergeMe(void) {}
 
-PmergeMe::PmergeMe(const PmergeMe& other) {
-	(void) other;
-}
+PmergeMe::PmergeMe(const PmergeMe& other) :
+	_bigDequeContainer(other._bigDequeContainer),
+	_smallDequeContainer(other._smallDequeContainer),
+	_finalDequeContainer(other._bigDequeContainer),
+	_bigVectorContainer(other._bigVectorContainer),
+	_smallVectorContainer(other._smallVectorContainer),
+	_finalVectorContainer(other._finalVectorContainer) {}
 
 PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
-	(void) other;
-	return *this;
+    if (this != &other) {
+        _bigDequeContainer = other._bigDequeContainer;
+        _smallDequeContainer = other._smallDequeContainer;
+        _finalDequeContainer = other._finalDequeContainer;
+        _bigVectorContainer = other._bigVectorContainer;
+        _smallVectorContainer = other._smallVectorContainer;
+        _finalVectorContainer = other._finalVectorContainer;
+    }
+    return *this;
 }
 
 PmergeMe::~PmergeMe(void) {}
 
-// Public methods
 
-void	PmergeMe::binaryInsert(std::deque<int>& src, std::deque<int>& dst) {
-	for (size_t i = 0; i < src.size(); ++i) {
-		std::deque<int>::iterator it = std::lower_bound(
-			dst.begin(), dst.end(), src[i]);
-		dst.insert(it, src[i]);
-	}
-}
+// DEQUE
 
-void PmergeMe::splitPairs(const std::deque<int>& container, std::deque<int>& smallContainer,
+void	PmergeMe::splitPairs(const std::deque<int>& container, std::deque<int>& smallContainer,
 	std::deque<int>& bigContainer)
 {
-    for (size_t i = 0; i + 1 < container.size(); i += 2) {
-        if (container[i] < container[i + 1]) {
-            smallContainer.push_back(container[i]);
-            bigContainer.push_back(container[i + 1]);
-        } else {
-            smallContainer.push_back(container[i + 1]);
-            bigContainer.push_back(container[i]);
-        }
-    }
-    if (container.size() % 2 != 0)
-        smallContainer.push_back(container.back());
+	for (size_t i = 0; i + 1 < container.size(); i += 2) {
+		if (container[i] < container[i + 1]) {
+			smallContainer.push_back(container[i]);
+			bigContainer.push_back(container[i + 1]);
+		} else {
+			smallContainer.push_back(container[i + 1]);
+			bigContainer.push_back(container[i]);
+		}
+	}
+	if (container.size() % 2 != 0)
+		smallContainer.push_back(container.back());
 }
 
-void PmergeMe::fordJohnsonSort(std::deque<int>& container) {
+void	PmergeMe::fordJohnsonSort(std::deque<int>& container) {
 	if (container.size() <= 1)
 		return;
 
@@ -54,78 +59,16 @@ void PmergeMe::fordJohnsonSort(std::deque<int>& container) {
 	binaryInsert(smallContainer, bigContainer);
 
 	container = bigContainer;
-	_finalContainer = bigContainer;
+	_finalDequeContainer = bigContainer;
 }
 
-
-std::deque<int>	PmergeMe::getBigContainer(void) {
-	return _bigContainer;
-}
-
-std::deque<int> PmergeMe::getSmallContainer(void) {
-	return _smallContainer;
-}
-
-std::deque<int> PmergeMe::getFinalContainer(void) {
-	return _finalContainer;
-}
-
-void	PmergeMe::print() {
-	std::cout << "Final Container: ";
-	for (size_t i = 0; i < _finalContainer.size(); ++i) {
-		std::cout << "[" << _finalContainer[i] << "]";
-		if (i != _finalContainer.size() - 1)
-			std::cout << ", ";
-	}
-	std::cout << std::endl;
-}
-
-// General methods
-
-bool    isNumber(const std::string& arg) {
-	for (size_t i = 0; i < arg.size(); ++i) {
-		if (i == 0 && arg[i] == '-')
-			i++;
-		if (!isdigit(arg[i])) {
-			std::cerr << "Error: all arguments must be digits" << std::endl;
-			return false;
-		}
-	}
-	// std::cout << "arguments are numbers" << std::endl;
-	return true;
-}
-
-bool	isPositive(const std::string& arg) {
-	int	num = std::atoi(arg.c_str());
-	if (num < 0) {
-		std::cerr << "Error: all numbers must be positive" << std::endl;
-		return false;
-	}
-	// std::cout << "arguments are positive" << std::endl;
-	return true;
-}
-
-void	parseArgs(std::deque<int>& container, char **av) {
-	for (size_t i = 0; av[i]; ++i) {
-		if (!isNumber(av[i]) || !isPositive(av[i]))
-			return;
-
-		int num = std::atoi(av[i]);
-		container.push_back(num);
+void	PmergeMe::binaryInsert(std::deque<int>& src, std::deque<int>& dst) {
+	for (size_t i = 0; i < src.size(); ++i) {
+		std::deque<int>::iterator it = std::lower_bound(
+			dst.begin(), dst.end(), src[i]);
+		dst.insert(it, src[i]);
 	}
 }
-
-/* Initial version, complexity complexity o(n²)
-void	deleteDuplicates(std::deque<int>& container) {
-	for (size_t i = 0; i < container.size(); ++i) {
-		for (size_t j = i + 1; j < container.size(); ) {
-			if (container[i] == container[j])
-				container.erase(container.begin() + j);
-			else
-				++j;
-		}
-	}
-} */
 
 // Optimized version, complexity o(n)
 void	deleteDuplicates(std::deque<int>& container) {
@@ -139,4 +82,118 @@ void	deleteDuplicates(std::deque<int>& container) {
 		}
 	}
 	container = result;
+}
+
+void	parseArgs(std::deque<int>& container, char **av) {
+	for (size_t i = 0; av[i]; ++i) {
+		if (!isNumber(av[i]))
+			throw std::invalid_argument("argument is not a number.");
+		if (!isPositive(av[i]))
+			throw std::invalid_argument("argument must be positive.");
+
+		int num = std::atoi(av[i]);
+		container.push_back(num);
+	}
+
+	deleteDuplicates(container);
+}
+
+
+// VECTOR
+
+void	PmergeMe::splitPairs(const std::vector<int>& container, std::vector<int>& smallContainer,
+	std::vector<int>& bigContainer)
+{
+	for (size_t i = 0; i + 1 < container.size(); i += 2) {
+		if (container[i] < container[i + 1]) {
+			smallContainer.push_back(container[i]);
+			bigContainer.push_back(container[i + 1]);
+		} else {
+			smallContainer.push_back(container[i + 1]);
+			bigContainer.push_back(container[i]);
+		}
+	}
+	if (container.size() % 2 != 0)
+		smallContainer.push_back(container.back());
+}
+
+void	PmergeMe::fordJohnsonSort(std::vector<int>& container) {
+	if (container.size() <= 1)
+		return;
+
+	std::vector<int> smallContainer, bigContainer;
+
+	splitPairs(container, smallContainer, bigContainer);
+	fordJohnsonSort(bigContainer);
+	binaryInsert(smallContainer, bigContainer);
+
+	container = bigContainer;
+	_finalVectorContainer = bigContainer;
+}
+
+void	PmergeMe::binaryInsert(std::vector<int>& src, std::vector<int>& dst) {
+	for (size_t i = 0; i < src.size(); ++i) {
+		std::vector<int>::iterator it = std::lower_bound(
+			dst.begin(), dst.end(), src[i]);
+		dst.insert(it, src[i]);
+	}
+}
+
+void	deleteDuplicates(std::vector<int>& container) {
+	std::set<int>		seenValues;
+	std::vector<int>	result;
+	
+	for (size_t i = 0; i < container.size(); ++i) {
+		if (seenValues.find(container[i]) == seenValues.end()) {
+			seenValues.insert(container[i]);
+			result.push_back(container[i]);
+		}
+	}
+	container = result;
+}
+
+void	parseArgs(std::vector<int>& container, char **av) {
+	for (size_t i = 0; av[i]; ++i) {
+		if (!isNumber(av[i]))
+			throw std::invalid_argument("argument is not a number.");
+		if (!isPositive(av[i]))
+			throw std::invalid_argument("argument must be positive.");
+
+		int num = std::atoi(av[i]);
+		container.push_back(num);
+	}
+
+	deleteDuplicates(container);
+}
+
+void	PmergeMe::print() {
+	std::cout << "Final Container: ";
+
+	for (size_t i = 0; i < _finalDequeContainer.size(); ++i) {
+		std::cout << "[" << _finalDequeContainer[i] << "]";
+		if (i != _finalDequeContainer.size() - 1)
+			std::cout << ", ";
+	}
+
+	std::cout << std::endl;
+}
+
+
+// General methods
+
+bool    isNumber(const std::string& arg) {
+	for (size_t i = 0; i < arg.size(); ++i) {
+		if (i == 0 && arg[i] == '-')
+			i++;
+		if (!isdigit(arg[i]))
+			return false;
+	}
+	return true;
+}
+
+bool	isPositive(const std::string& arg) {
+	int	num = std::atoi(arg.c_str());
+	if (num < 0)
+		return false;
+	return true;
 }
