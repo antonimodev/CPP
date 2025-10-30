@@ -1,5 +1,8 @@
 #include "RPN.hpp"
 #include <cstdlib>
+#include <sstream>
+#include <climits>
+
 
 RPN::RPN(void) {}
 
@@ -18,49 +21,75 @@ RPN::~RPN(void) {}
 // ------------------- Public Methods -------------------
 
 // char* and std::string are not the same, so char *av received isn't std::string
-void	RPN::push(const char* str) {
-	_numsPile.push(atoi(str));
+void	RPN::push(std::string& arg) {
+	_numsPile.push(atoi(arg.c_str()));
 }
 
-void	RPN::performOperation(const char op) {
+
+void	RPN::performOperation(std::string& op) {
 	if (_numsPile.size() < 2) {
 		std::cerr << "Error: must be at least 2 numbers in stack to operate" << std::endl;
 		exit(1);
 	}
 
-	int firstNum = _numsPile.top();
+	long long firstNum = _numsPile.top();
 	_numsPile.pop();
-	int secondNum = _numsPile.top();
+	long long secondNum = _numsPile.top();
 	_numsPile.pop();
 
-	switch (op) {
-		case '+': _numsPile.push(secondNum + firstNum); break;
-		case '-': _numsPile.push(secondNum - firstNum); break;
-		case '*': _numsPile.push(secondNum * firstNum); break;  
+	long long result;
+
+	switch (op[0]) {
+		case '+': result = secondNum + firstNum; break;
+		case '-': result = secondNum - firstNum; break;
+		case '*': result = secondNum * firstNum; break;
 		case '/':
 			if (firstNum == 0) {
 				std::cerr << "Error: can't divide by zero" << std::endl;
 				exit(1);
 			}
-			_numsPile.push(secondNum / firstNum); break;
+			result = secondNum / firstNum;
+			break;
 		default:
-			std::cerr << "Unknown operator" << std::endl;
+			std::cerr << "Error: bad operations" << std::endl;
 			exit(1);
+	}
+
+	if (result < INT_MIN || result > INT_MAX) {
+		std::cerr << "Error: number out of int range" << std::endl;
+		exit(1);
+	}
+
+	_numsPile.push(static_cast<int>(result));
+}
+
+void	RPN::processCalc(char *av, RPN& polishCalc) {
+	std::istringstream iss(av);
+	std::string	arg;
+
+	while (iss >> arg && isValid(arg)) {
+		if (isNumber(arg)) {
+			polishCalc.push(arg);
+			continue;
+		}
+		polishCalc.performOperation(arg);
 	}
 }
 
 void	RPN::printResult(void) const {
-	if (_numsPile.size() == 1)
-		std::cout << _numsPile.top() << std::endl;
+	if (_numsPile.size() > 1) {
+		std::cerr << "Error: invalid expression (remaining numbers in stack)" << std::endl;
+		exit(1);
+	}
+	std::cout << _numsPile.top() << std::endl;
 }
 
 void	RPN::printStack(void) const {
 	std::stack<int> copy = _numsPile;
-	size_t i = 0;
-	while (!copy.empty()) {
+
+	for (size_t i = 0; !copy.empty(); ++i) {
 		std::cout << "[" << i << "] " << copy.top() << std::endl;
 		copy.pop();
-		++i;
 	}
 }
 
@@ -87,3 +116,44 @@ bool isOperator(const std::string& arg) {
 		||	arg[0] == '*'
 		||	arg[0] == '/'));
 }
+
+bool	isValid(std::string& arg) {
+	if (isOperator(arg))
+		return true;
+
+	if (isNumber(arg)) {
+		std::istringstream iss(arg);
+		int num;
+
+		iss >> num;
+		if (num > 9) {
+			std::cerr << "Error: 9 is max value allowed" << std::endl;
+			exit(1);
+		}
+
+		return true;
+	}
+
+	std::cerr << "Error: Args must be numbers or arithmetic op (+, -, *, /)" << std::endl;
+	exit(1);
+}
+
+
+/* void	RPN::processCalc(char *av, RPN& polishCalc) {
+	std::istringstream iss(av);
+	std::string	arg;
+
+	int	argNums = 0;
+	while (iss >> arg && isValid(arg)) {
+		if (isNumber(arg)) {
+			argNums++;
+			if (argNums > 9) {
+				std::cerr << "Error: numbers quantity must be between 0-9" << std::endl;
+				exit(1);
+			}
+			polishCalc.push(arg);
+			continue;
+		}
+		polishCalc.performOperation(arg);
+	}
+} */
