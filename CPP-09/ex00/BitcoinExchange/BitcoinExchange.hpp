@@ -22,6 +22,7 @@ class BitcoinExchange {
 		void				process_input_file(const std::string& filename);
 };
 
-void	validExtension(char **av);
+void		validExtension(char **av);
+std::string	trim(const std::string& str);
 
 #endif

@@ -1,6 +1,7 @@
 #include "PmergeMe.hpp"
 #include <cctype>
 #include <cstdlib>
+#include <sstream>
 #include <set>
 #include <stdexcept>
 
@@ -88,11 +89,12 @@ void	parseArgs(std::deque<int>& container, char **av) {
 	for (size_t i = 0; av[i]; ++i) {
 		if (!isNumber(av[i]))
 			throw std::invalid_argument("argument is not a number.");
+		if (!isIntRange(av[i]))
+			throw std::invalid_argument("argument numbers is out of int range");
 		if (!isPositive(av[i]))
 			throw std::invalid_argument("argument must be positive.");
 
-		int num = std::atoi(av[i]);
-		container.push_back(num);
+		container.push_back(atoi(av[i]));
 	}
 
 	deleteDuplicates(container);
@@ -156,11 +158,12 @@ void	parseArgs(std::vector<int>& container, char **av) {
 	for (size_t i = 0; av[i]; ++i) {
 		if (!isNumber(av[i]))
 			throw std::invalid_argument("argument is not a number.");
+		if (!isIntRange(av[i]))
+			throw std::invalid_argument("argument numbers is out of int range");
 		if (!isPositive(av[i]))
 			throw std::invalid_argument("argument must be positive.");
 
-		int num = std::atoi(av[i]);
-		container.push_back(num);
+		container.push_back(atoi(av[i]));
 	}
 
 	deleteDuplicates(container);
@@ -194,6 +197,15 @@ bool    isNumber(const std::string& arg) {
 bool	isPositive(const std::string& arg) {
 	int	num = std::atoi(arg.c_str());
 	if (num < 0)
+		return false;
+	return true;
+}
+
+bool	isIntRange(const std::string& arg) {
+	std::istringstream iss(arg);
+	int num;
+
+	if (!(iss >> num))
 		return false;
 	return true;
 }

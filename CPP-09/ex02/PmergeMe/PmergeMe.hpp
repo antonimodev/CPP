@@ -38,6 +38,7 @@ class PmergeMe {
 
 // PARSE
 bool    isNumber(const std::string& arg);
+bool	isIntRange(const std::string& arg);
 bool    isPositive(const std::string& arg);
 
 // DEQUE

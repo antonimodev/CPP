@@ -100,7 +100,7 @@ void BitcoinExchange::process_input_file(const std::string& filename) {
 			continue;
 		}
 
-		std::string date = line.substr(0, pos - 1);
+		std::string date = trim(line.substr(0, pos));
 		if (!validate_date(date)) {
 			std::cerr << "Error: invalid date => " << date << std::endl;
 			continue;
@@ -108,7 +108,7 @@ void BitcoinExchange::process_input_file(const std::string& filename) {
 
 		double value = 0;
 		if (!store_safe_stod(line.substr(pos + 1), value)) {
-			std::cerr << "Error: invalid value => " << value << std::endl;
+			std::cerr << "Error: invalid value => " << line.substr(pos + 1) << std::endl;
 			continue;
 		}
 
@@ -147,4 +147,14 @@ void	validExtension(char **av) {
 		std::cerr << "Error: file format must be .txt" << std::endl;
 		exit(1);
 	}
+}
+
+std::string	trim(const std::string& str) {
+	size_t first = str.find_first_not_of(" \t");
+
+	if (first == std::string::npos)
+		return "";
+
+	size_t last = str.find_last_not_of(" \t");
+	return str.substr(first, (last - first) + 1);
 }

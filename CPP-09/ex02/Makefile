@@ -4,7 +4,7 @@
 
 NAME = pmergeme
 COMPILE = c++
-INCLUDES = -IPmergeMe
+INCLUDES = -IPmergeMe -IPrint
 FLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES) -MMD
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 HEADER = $(OBJ:.o=.d)
@@ -15,6 +15,7 @@ HEADER = $(OBJ:.o=.d)
 
 SRC =	main.cpp \
 		PmergeMe/PmergeMe.cpp \
+		Print/print.cpp
 
 # ================= #
 #	   TARGETS		#

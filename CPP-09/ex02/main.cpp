@@ -32,7 +32,7 @@ int	main(int ac, char **av) {
 	algorithm.fordJohnsonSort(vectorContainer);
 	clock_t endVector = clock();
 
-	printMsg(startDeque, endDeque, dequeContainer);
-	printMsg(startVector, endVector, vectorContainer);
+	printMsg(startDeque, endDeque, ac);
+	printMsg(startVector, endVector, ac);
 	return 0;
 }
