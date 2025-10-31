@@ -3,17 +3,8 @@
 #include <cstdlib>
 
 
-/* EXAMPLES
-2 3 + -> 5
-2 3 4 * + -> 14
-5 1 2 + 4 * + 3 - -> 14
-2 + -> ERROR
--3 -2 * -> 6
-*/
-
-
 int main(int ac, char **av) {
-	if (ac != 2) {
+	if (ac != 2 || !av || av[1][0] == '\0' || av[1] == NULL) {
 		std::cerr << "Error: usage: ./RPN \"<num1> <num2> <arithmetic op>\"" << std::endl;
 		return 1;
 	}

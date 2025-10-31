@@ -1,12 +1,13 @@
 #include "PmergeMe.hpp"
-#include <cctype>
 #include <cstdlib>
+#include <cctype>
 #include <sstream>
-#include <set>
 #include <stdexcept>
+#include <set>
 
-// constructors still in development, (void) to avoid make errors
+
 PmergeMe::PmergeMe(void) {}
+
 
 PmergeMe::PmergeMe(const PmergeMe& other) :
 	_bigDequeContainer(other._bigDequeContainer),
@@ -15,6 +16,7 @@ PmergeMe::PmergeMe(const PmergeMe& other) :
 	_bigVectorContainer(other._bigVectorContainer),
 	_smallVectorContainer(other._smallVectorContainer),
 	_finalVectorContainer(other._finalVectorContainer) {}
+
 
 PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
     if (this != &other) {
@@ -28,10 +30,11 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
     return *this;
 }
 
+
 PmergeMe::~PmergeMe(void) {}
 
 
-// DEQUE
+// ------------- Deque -------------
 
 void	PmergeMe::splitPairs(const std::deque<int>& container, std::deque<int>& smallContainer,
 	std::deque<int>& bigContainer)
@@ -49,6 +52,7 @@ void	PmergeMe::splitPairs(const std::deque<int>& container, std::deque<int>& sma
 		smallContainer.push_back(container.back());
 }
 
+
 void	PmergeMe::fordJohnsonSort(std::deque<int>& container) {
 	if (container.size() <= 1)
 		return;
@@ -63,6 +67,7 @@ void	PmergeMe::fordJohnsonSort(std::deque<int>& container) {
 	_finalDequeContainer = bigContainer;
 }
 
+
 void	PmergeMe::binaryInsert(std::deque<int>& src, std::deque<int>& dst) {
 	for (size_t i = 0; i < src.size(); ++i) {
 		std::deque<int>::iterator it = std::lower_bound(
@@ -70,6 +75,7 @@ void	PmergeMe::binaryInsert(std::deque<int>& src, std::deque<int>& dst) {
 		dst.insert(it, src[i]);
 	}
 }
+
 
 // Optimized version, complexity o(n)
 void	deleteDuplicates(std::deque<int>& container) {
@@ -84,6 +90,7 @@ void	deleteDuplicates(std::deque<int>& container) {
 	}
 	container = result;
 }
+
 
 void	parseArgs(std::deque<int>& container, char **av) {
 	for (size_t i = 0; av[i]; ++i) {
@@ -101,8 +108,7 @@ void	parseArgs(std::deque<int>& container, char **av) {
 }
 
 
-// VECTOR
-
+// ------------- Vector -------------
 void	PmergeMe::splitPairs(const std::vector<int>& container, std::vector<int>& smallContainer,
 	std::vector<int>& bigContainer)
 {
@@ -119,6 +125,7 @@ void	PmergeMe::splitPairs(const std::vector<int>& container, std::vector<int>& s
 		smallContainer.push_back(container.back());
 }
 
+
 void	PmergeMe::fordJohnsonSort(std::vector<int>& container) {
 	if (container.size() <= 1)
 		return;
@@ -133,6 +140,7 @@ void	PmergeMe::fordJohnsonSort(std::vector<int>& container) {
 	_finalVectorContainer = bigContainer;
 }
 
+
 void	PmergeMe::binaryInsert(std::vector<int>& src, std::vector<int>& dst) {
 	for (size_t i = 0; i < src.size(); ++i) {
 		std::vector<int>::iterator it = std::lower_bound(
@@ -140,6 +148,7 @@ void	PmergeMe::binaryInsert(std::vector<int>& src, std::vector<int>& dst) {
 		dst.insert(it, src[i]);
 	}
 }
+
 
 void	deleteDuplicates(std::vector<int>& container) {
 	std::set<int>		seenValues;
@@ -153,6 +162,7 @@ void	deleteDuplicates(std::vector<int>& container) {
 	}
 	container = result;
 }
+
 
 void	parseArgs(std::vector<int>& container, char **av) {
 	for (size_t i = 0; av[i]; ++i) {
@@ -169,6 +179,7 @@ void	parseArgs(std::vector<int>& container, char **av) {
 	deleteDuplicates(container);
 }
 
+
 void	PmergeMe::print() {
 	std::cout << "Final Container: ";
 
@@ -182,8 +193,7 @@ void	PmergeMe::print() {
 }
 
 
-// General methods
-
+// ------------- General -------------
 bool    isNumber(const std::string& arg) {
 	for (size_t i = 0; i < arg.size(); ++i) {
 		if (i == 0 && arg[i] == '-')
@@ -194,12 +204,14 @@ bool    isNumber(const std::string& arg) {
 	return true;
 }
 
+
 bool	isPositive(const std::string& arg) {
 	int	num = std::atoi(arg.c_str());
 	if (num < 0)
 		return false;
 	return true;
 }
+
 
 bool	isIntRange(const std::string& arg) {
 	std::istringstream iss(arg);

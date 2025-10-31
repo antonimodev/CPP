@@ -6,9 +6,9 @@
 
 RPN::RPN(void) {}
 
-RPN::RPN(const RPN& other) {
-	(void)other;
-}
+
+RPN::RPN(const RPN& other) : _numsPile(other._numsPile) {}
+
 
 RPN&	RPN::operator=(const RPN& other) {
 	if (this != &other)
@@ -16,11 +16,13 @@ RPN&	RPN::operator=(const RPN& other) {
 	return *this;
 }
 
+
 RPN::~RPN(void) {}
 
-// ------------------- Public Methods -------------------
 
-// char* and std::string are not the same, so char *av received isn't std::string
+// ------------------- Public -------------------
+
+
 void	RPN::push(std::string& arg) {
 	_numsPile.push(atoi(arg.c_str()));
 }
@@ -63,6 +65,7 @@ void	RPN::performOperation(std::string& op) {
 	_numsPile.push(static_cast<int>(result));
 }
 
+
 void	RPN::processCalc(char *av, RPN& polishCalc) {
 	std::istringstream iss(av);
 	std::string	arg;
@@ -76,6 +79,7 @@ void	RPN::processCalc(char *av, RPN& polishCalc) {
 	}
 }
 
+
 void	RPN::printResult(void) const {
 	if (_numsPile.size() > 1) {
 		std::cerr << "Error: invalid expression (remaining numbers in stack)" << std::endl;
@@ -83,6 +87,7 @@ void	RPN::printResult(void) const {
 	}
 	std::cout << _numsPile.top() << std::endl;
 }
+
 
 void	RPN::printStack(void) const {
 	std::stack<int> copy = _numsPile;
@@ -93,7 +98,9 @@ void	RPN::printStack(void) const {
 	}
 }
 
-// ------------------- Global Functions -------------------
+
+// ------------------- General -------------------
+
 
 bool isNumber(const std::string& arg) {
 	if (arg.empty())
@@ -109,6 +116,7 @@ bool isNumber(const std::string& arg) {
 	return true;
 }
 
+
 bool isOperator(const std::string& arg) {
 	return ((arg.size() == 1)
 		&&	(arg[0] == '+'
@@ -116,6 +124,7 @@ bool isOperator(const std::string& arg) {
 		||	arg[0] == '*'
 		||	arg[0] == '/'));
 }
+
 
 bool	isValid(std::string& arg) {
 	if (isOperator(arg))

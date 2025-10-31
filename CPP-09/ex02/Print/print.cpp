@@ -1,7 +1,7 @@
 #include "print.hpp"
 #include <ctime>
 
-// DEQUE
+// ------------- Deque -------------
 void	printAfter(std::deque<int>& container) {
 	std::cout << "After:";
 
@@ -12,7 +12,8 @@ void	printAfter(std::deque<int>& container) {
 	std::cout << std::endl;
 }
 
-// VECTOR
+
+// ------------- Vector -------------
 void	printAfter(std::vector<int>& container) {
 	std::cout << "After:";
 
@@ -23,7 +24,8 @@ void	printAfter(std::vector<int>& container) {
 	std::cout << std::endl;
 }
 
-// GENERAL
+
+// ------------- General -------------
 void	printBefore(int ac, char **av) {
 	std::cout << "Before:";
 
@@ -32,6 +34,7 @@ void	printBefore(int ac, char **av) {
 
 	std::cout << std::endl;
 }
+
 
 void	printMsg(clock_t start, clock_t end, int ac) {
 	double elapsed_time = static_cast<double>(end - start) * (CLOCKS_PER_SEC / 10000000000.0);

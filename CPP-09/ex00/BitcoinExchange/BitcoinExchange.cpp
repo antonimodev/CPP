@@ -1,8 +1,7 @@
+#include "BitcoinExchange.hpp"
 #include <fstream>
-#include <cstdlib>
 #include <sstream>
 
-#include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(const std::string db_filename) {
 	std::ifstream db(db_filename.c_str());
@@ -13,7 +12,9 @@ BitcoinExchange::BitcoinExchange(const std::string db_filename) {
 	_db = load_db(db);
 }
 
+
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : _db(other._db) {}
+
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
 	if (this != &other)
@@ -21,9 +22,11 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
 	return *this;
 }
 
+
 BitcoinExchange::~BitcoinExchange(void) {}
 
-// ------------------- Private Helpers -------------------
+
+// ------------------- Private -------------------
 
 std::map<std::string, double>	BitcoinExchange::load_db(std::ifstream& db) {
 	std::map<std::string, double> db_map;
@@ -44,6 +47,7 @@ std::map<std::string, double>	BitcoinExchange::load_db(std::ifstream& db) {
 	return db_map;
 }
 
+
 bool	BitcoinExchange::store_safe_stod(const std::string& str, double& value) {
 	std::stringstream numberStream(str);
 	numberStream >> value;
@@ -51,6 +55,7 @@ bool	BitcoinExchange::store_safe_stod(const std::string& str, double& value) {
 		return false;
 	return true;
 }
+
 
 bool	BitcoinExchange::validate_date(const std::string& date) {
 	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
@@ -75,7 +80,8 @@ bool	BitcoinExchange::validate_date(const std::string& date) {
 	return true;
 }
 
-// ------------------- Public Method -------------------
+
+// ------------------- Public -------------------
 
 void BitcoinExchange::process_input_file(const std::string& filename) {
 	std::ifstream input(filename.c_str());
@@ -136,7 +142,9 @@ void BitcoinExchange::process_input_file(const std::string& filename) {
 	}
 }
 
-// GENERAL FUNCTIONS
+
+// ------------- General ------------------ 
+
 
 void	validExtension(char **av) {
 	std::string input = av[1];
@@ -148,6 +156,7 @@ void	validExtension(char **av) {
 		exit(1);
 	}
 }
+
 
 std::string	trim(const std::string& str) {
 	size_t first = str.find_first_not_of(" \t");

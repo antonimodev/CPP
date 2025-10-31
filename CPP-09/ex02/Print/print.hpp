@@ -2,11 +2,14 @@
 
 #include "PmergeMe.hpp"
 
+
 // DEQUE
 void	printAfter(std::deque<int>& container);
 
+
 // VECTOR
 void	printAfter(std::vector<int>& container);
+
 
 // GENERAL
 void	printBefore(int ac, char **av);
