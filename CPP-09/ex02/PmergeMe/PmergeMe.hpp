@@ -14,6 +14,10 @@ class PmergeMe {
 		std::vector<int>	_smallVectorContainer;
 		std::vector<int>	_finalVectorContainer;
 
+		// Jacobsthal
+		void	generateJacobsthalSequence(std::vector<size_t>& sequence, size_t limit);
+		void	generateInsertionOrder(std::vector<size_t>& indices, size_t pendingSize);
+
 	public:
 		PmergeMe(void);
 		PmergeMe(const PmergeMe& other);
@@ -24,13 +28,13 @@ class PmergeMe {
 		void	splitPairs(const std::deque<int>& container, std::deque<int>& smallContainer,
 				std::deque<int>& bigContainer);
 		void	fordJohnsonSort(std::deque<int>& input);
-		void	binaryInsert(std::deque<int>& src, std::deque<int>& dst);
+		void	binaryInsertWithJacobsthal(std::deque<int>& src, std::deque<int>& dst);
 
 		// VECTOR
 		void	splitPairs(const std::vector<int>& container, std::vector<int>& smallContainer,
 				std::vector<int>& bigContainer);
 		void	fordJohnsonSort(std::vector<int>& input);
-		void	binaryInsert(std::vector<int>& src, std::vector<int>& dst);
+		void	binaryInsertWithJacobsthal(std::vector<int>& src, std::vector<int>& dst);
 
 		// UTILITIES
 		void	print(void);

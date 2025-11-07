@@ -81,6 +81,10 @@ void	RPN::processCalc(char *av, RPN& polishCalc) {
 
 
 void	RPN::printResult(void) const {
+	if (_numsPile.empty()) {
+		std::cerr << "Error: empty or invalid expression" << std::endl;
+		exit(1);
+	}
 	if (_numsPile.size() > 1) {
 		std::cerr << "Error: invalid expression (remaining numbers in stack)" << std::endl;
 		exit(1);

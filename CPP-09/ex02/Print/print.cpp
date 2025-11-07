@@ -36,10 +36,15 @@ void	printBefore(int ac, char **av) {
 }
 
 
-void	printMsg(clock_t start, clock_t end, int ac) {
+void	printMsg(e_container type, clock_t start, clock_t end, int ac) {
 	double elapsed_time = static_cast<double>(end - start) * (CLOCKS_PER_SEC / 10000000000.0);
 	
-	std::cout << "Time to process a range of "
-	<< (ac - 1) << " elements with std::vector: "
-	<< elapsed_time << " us" << std::endl;
+	if (type == DEQUE)
+		std::cout << "Time to process a range of "
+		<< (ac - 1) << " elements with std::deque: "
+		<< elapsed_time << " us" << std::endl;
+	else
+		std::cout << "Time to process a range of "
+		<< (ac - 1) << " elements with std::vector: "
+		<< elapsed_time << " us" << std::endl;
 }

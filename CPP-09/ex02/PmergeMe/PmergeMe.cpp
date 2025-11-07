@@ -34,6 +34,54 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
 PmergeMe::~PmergeMe(void) {}
 
 
+// JACOBSTHAL SEQUENCE IMPLEMENTATION
+void	PmergeMe::generateJacobsthalSequence(std::vector<size_t>& sequence, size_t limit) {
+	if (limit == 0)
+		return;
+
+	size_t jacob_prev = 0; // J(0) = 0
+	size_t jacob_curr = 1; // J(1) = 1
+
+	while (jacob_curr < limit) {
+		sequence.push_back(jacob_curr);
+		size_t jacob_next = jacob_curr + 2 * jacob_prev; // J(n) = J(n-1) + 2 * J(n-2)
+		jacob_prev = jacob_curr;
+		jacob_curr = jacob_next;
+	}
+}
+
+
+void	PmergeMe::generateInsertionOrder(std::vector<size_t>& insertionIndexes, size_t elementsToInsert) {
+    if (elementsToInsert == 0)
+        return;
+
+    std::vector<size_t> jacobsthalPositions;
+    generateJacobsthalSequence(jacobsthalPositions, elementsToInsert);
+
+    std::vector<bool> alreadyInserted(elementsToInsert, false);
+    size_t previousJacob = 0;
+
+    for (size_t i = 0; i < jacobsthalPositions.size(); ++i) {
+        size_t currentJacob = jacobsthalPositions[i];
+        size_t endRange = (currentJacob <= elementsToInsert) ? currentJacob : elementsToInsert;
+
+        for (size_t pos = endRange; pos > previousJacob; --pos) {
+            size_t idx = pos - 1;
+            if (!alreadyInserted[idx]) {
+                insertionIndexes.push_back(idx);
+                alreadyInserted[idx] = true;
+            }
+        }
+        previousJacob = currentJacob;
+    }
+
+    for (size_t i = 0; i < elementsToInsert; ++i) {
+        if (!alreadyInserted[i])
+            insertionIndexes.push_back(i);
+    }
+}
+
+
 // ------------- Deque -------------
 
 void	PmergeMe::splitPairs(const std::deque<int>& container, std::deque<int>& smallContainer,
@@ -61,18 +109,25 @@ void	PmergeMe::fordJohnsonSort(std::deque<int>& container) {
 
 	splitPairs(container, smallContainer, bigContainer);
 	fordJohnsonSort(bigContainer);
-	binaryInsert(smallContainer, bigContainer);
+	binaryInsertWithJacobsthal(smallContainer, bigContainer);
 
 	container = bigContainer;
 	_finalDequeContainer = bigContainer;
 }
 
 
-void	PmergeMe::binaryInsert(std::deque<int>& src, std::deque<int>& dst) {
-	for (size_t i = 0; i < src.size(); ++i) {
+void	PmergeMe::binaryInsertWithJacobsthal(std::deque<int>& src, std::deque<int>& dst) {
+	if (src.empty())
+		return;
+
+	std::vector<size_t> insertionOrder;
+	generateInsertionOrder(insertionOrder, src.size());
+
+	for (size_t i = 0; i < insertionOrder.size(); ++i) {
+		size_t idx = insertionOrder[i];
 		std::deque<int>::iterator it = std::lower_bound(
-			dst.begin(), dst.end(), src[i]);
-		dst.insert(it, src[i]);
+			dst.begin(), dst.end(), src[idx]);
+		dst.insert(it, src[idx]);
 	}
 }
 
@@ -109,6 +164,7 @@ void	parseArgs(std::deque<int>& container, char **av) {
 
 
 // ------------- Vector -------------
+
 void	PmergeMe::splitPairs(const std::vector<int>& container, std::vector<int>& smallContainer,
 	std::vector<int>& bigContainer)
 {
@@ -134,18 +190,25 @@ void	PmergeMe::fordJohnsonSort(std::vector<int>& container) {
 
 	splitPairs(container, smallContainer, bigContainer);
 	fordJohnsonSort(bigContainer);
-	binaryInsert(smallContainer, bigContainer);
+	binaryInsertWithJacobsthal(smallContainer, bigContainer);
 
 	container = bigContainer;
 	_finalVectorContainer = bigContainer;
 }
 
 
-void	PmergeMe::binaryInsert(std::vector<int>& src, std::vector<int>& dst) {
-	for (size_t i = 0; i < src.size(); ++i) {
+void	PmergeMe::binaryInsertWithJacobsthal(std::vector<int>& src, std::vector<int>& dst) {
+	if (src.empty())
+		return;
+
+	std::vector<size_t> insertionOrder;
+	generateInsertionOrder(insertionOrder, src.size());
+
+	for (size_t i = 0; i < insertionOrder.size(); ++i) {
+		size_t idx = insertionOrder[i];
 		std::vector<int>::iterator it = std::lower_bound(
-			dst.begin(), dst.end(), src[i]);
-		dst.insert(it, src[i]);
+			dst.begin(), dst.end(), src[idx]);
+		dst.insert(it, src[idx]);
 	}
 }
 
